@@ -1,0 +1,64 @@
+@import '../../styles/index.scss';
+
+.howitworks {
+
+}
+
+.howitworks__wrapper {
+  padding: 9.6rem 0;
+}
+
+.howitworks__title {
+  @extend %title-52;
+  text-align: center;
+}
+
+.howitworks__steps__wrapper {
+  margin: auto;
+  width: 80%;
+  padding: 6.4rem 0;
+}
+
+.howitworks__step__wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 3.6rem 0;
+  gap: 3.6rem;
+
+  &:nth-of-type(even) {
+    flex-direction: row-reverse;
+  }
+}
+
+.howitworks__step__icon__wrapper {
+  width: 25.6rem;
+  height: 25.6rem;
+
+  .howitworks__step__icon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+
+
+.howitworks__step__content__wrapper {
+  width: 70%;
+}
+
+.howitworks__step__point {
+  @extend %title-32;
+  margin-bottom: 2.4rem;
+}
+
+.howitworks__step__description {
+  @extend %text-18;
+
+  li {
+    font-size: 1.4rem;
+    list-style: disc;
+    list-style-position: inside;
+  }
+}

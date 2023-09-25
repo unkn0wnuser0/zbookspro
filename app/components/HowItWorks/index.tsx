@@ -1,6 +1,6 @@
 'use client'
 
-import './howitworks.module.scss'
+import './howitworks.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'

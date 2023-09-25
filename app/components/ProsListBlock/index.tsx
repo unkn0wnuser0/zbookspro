@@ -1,10 +1,12 @@
 'use client'
 
-import './proslist.module.scss'
+import './proslist.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
 import { PrismicRichText } from '@prismicio/react'
+
+export const revalidate = 0
 
 export default function ProsList({
   data,

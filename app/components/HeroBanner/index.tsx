@@ -1,6 +1,6 @@
 'use client'
 
-import './herobanner.module.scss'
+import './herobanner.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'
@@ -24,15 +24,15 @@ export default function HeroBanner({
           <button className='herobanner__button'>
             {data.primary.button_caption}
           </button>
-          <figure className='herobanner__image__wrapper'>
-            <PrismicNextImage
-              className='herobanner__image'
-              field={data.primary.image}
-              alt=''
-              priority
-            />
-          </figure>
         </div>
+        <figure className='herobanner__image__wrapper'>
+          <PrismicNextImage
+            className='herobanner__image'
+            field={data.primary.image}
+            alt=''
+            priority
+          />
+        </figure>
       </div>
     </div>
   )

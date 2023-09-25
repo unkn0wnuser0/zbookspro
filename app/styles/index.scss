@@ -27,6 +27,15 @@ body {
   display: block;
 }
 
+button {
+  padding: 1.8rem 5.2rem;
+  font-size: 1.6rem;
+  background-color: $color-red;
+  color: $color-white;
+  font-weight: 800;
+  border-radius: 1.6rem;
+}
+
 
 .App {
   position: fixed;

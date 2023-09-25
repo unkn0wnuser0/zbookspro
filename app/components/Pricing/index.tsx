@@ -1,6 +1,6 @@
 'use client'
 
-import './pricing.module.scss'
+import './pricing.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'

@@ -1,6 +1,6 @@
 'use client'
 
-import './prosicons.module.scss'
+import './prosicons.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'

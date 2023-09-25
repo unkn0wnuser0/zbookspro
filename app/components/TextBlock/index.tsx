@@ -1,6 +1,6 @@
 'use client'
 
-import './textblock.module.scss'
+import './textblock.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'

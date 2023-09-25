@@ -16,10 +16,10 @@
 
 html {
     height: 100%;
-    font-size:calc(100vw/1920 * 12);
+    font-size:calc(100vw/1920 * 16);
 
     @include media('<tablet-v') {
-        font-size:calc(100vw/768 * 8);
+        font-size:calc(100vw/768 * 12);
     }
 
     @include media('<tablet') {
@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
 
 img {
     opacity: 1;
-    vertical-align: middle;
+    // vertical-align: middle;
 }
 
 

@@ -1,0 +1,76 @@
+@import '../../styles/index.scss';
+
+
+.proslist {
+
+}
+
+.proslist__wrapper {
+  padding: 9.6rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.proslist__image__wrapper {
+  width: 50%;
+  padding: 0 3.6rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.proslist__content__wrapper {
+  width: 50%;
+  padding: 0 6.4rem;
+}
+
+.proslist__title {
+  @extend %title-36;
+  margin-bottom: 3.6rem;
+}
+
+.proslist__paragraphs {
+  @extend %text-18;
+  margin-bottom: 2.4rem;
+}
+
+.proslist__list__wrapper {
+
+}
+
+.proslist__list__point__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0.6rem 0;
+}
+
+.proslist__list__point__icon__wrapper {
+  width: 2.4rem;
+  height: 2.4rem;
+  position: relative;
+  margin-right: 1.2rem;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.proslist__list__point__caption {
+  @extend %text-18;
+  width: 80%;
+
+  p {
+    margin-bottom: unset;
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../styles/index.scss';
+
+.textblock {
+
+}
+
+.textblock__wrapper {
+  padding: 9.6rem 20%;
+  text-align: center;
+  background-color: $color-gray;
+}
+
+.textblock__title {
+  @extend %title-36;
+  margin-bottom: 3.6rem
+}
+
+.textblock__paragraphs {
+  @extend %text-18;
+}

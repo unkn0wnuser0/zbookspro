@@ -1,6 +1,6 @@
 'use client'
 
-import './contactform.module.scss'
+import './contactform.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'

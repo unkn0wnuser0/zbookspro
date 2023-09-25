@@ -1,6 +1,6 @@
 'use client'
 
-import './experience.module.scss'
+import './experience.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicNextImage } from '@prismicio/next'

@@ -1,0 +1,42 @@
+@import '../../styles/index.scss';
+
+.herobanner{
+
+}
+
+.herobanner__wrapper{
+  padding: 9.6rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.herobanner__content__wrapper{
+  width: 50%;
+  padding: 0 6.4rem;
+}
+
+.herobanner__title{
+  @extend %title-48;
+  margin-bottom: 3.6rem;
+}
+
+.herobanner__paragraphs{
+  @extend %text-18;
+  margin-bottom: 3.6rem;
+}
+
+.herobanner__image__wrapper{
+  padding: 0 2.4rem;
+  width: 50%
+}
+
+.herobanner__image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.herobanner__button {
+  background-color: $color-red;;
+}
