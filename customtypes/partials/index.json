@@ -44,6 +44,22 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "checked_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Checked Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "unchecked_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Unchecked Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }

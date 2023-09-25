@@ -1,0 +1,61 @@
+@import './utils/variables';
+@import './utils/functions';
+@import './utils/mixins';
+@import './utils/vendors';
+@import './utils/responsive';
+@import './utils/cursor';
+
+@import './text/paragraphs.scss';
+@import './text/titles.scss';
+@import './text/links.scss';
+
+@import './base/reset';
+@import './base/fonts';
+@import './base/base';
+
+html{
+  box-sizing: border-box;
+}
+
+figure {
+  overflow: hidden;
+  // opacity: 0;
+}
+
+body {
+  box-sizing: border-box;
+  display: block;
+}
+
+
+.App {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100vw;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 1;
+  font-family: $font-inter;
+  color: $color-black;
+  background-color: $color-white;
+}
+
+.app__wrapper {
+  width: 100vw;
+  height: fit-content;
+  // @extend %cover;
+}
+
+.header {
+  position: fixed
+}
+
+.image__wrapper {
+  display: inline-block;
+}
+
+.example::-webkit-scrollbar {
+  display: none;
+}

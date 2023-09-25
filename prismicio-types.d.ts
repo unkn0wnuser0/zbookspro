@@ -95,7 +95,16 @@ export type HeaderDocument<Lang extends string = string> =
     Lang
   >;
 
-type IndexDocumentDataSlicesSlice = HeroBannerSlice;
+type IndexDocumentDataSlicesSlice =
+  | ExperienceBlockSlice
+  | ContactFormSlice
+  | AlignedTextBlockSlice
+  | ProsIconsBlockSlice
+  | PricingSlice
+  | HowItWorksSlice
+  | ProsListBlockSlice
+  | TextBlockSlice
+  | HeroBannerSlice;
 
 /**
  * Content for Index documents
@@ -217,6 +226,28 @@ interface PartialsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<never>;
+
+  /**
+   * Checked Icon field in *Partials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partials.checked_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  checked_icon: prismic.ImageField<never>;
+
+  /**
+   * Unchecked Icon field in *Partials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partials.unchecked_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  unchecked_icon: prismic.ImageField<never>;
 }
 
 /**

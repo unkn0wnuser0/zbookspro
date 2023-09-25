@@ -11,6 +11,30 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "experience_block": {
+              "type": "SharedSlice"
+            },
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "aligned_text_block": {
+              "type": "SharedSlice"
+            },
+            "pros_icons_block": {
+              "type": "SharedSlice"
+            },
+            "pricing": {
+              "type": "SharedSlice"
+            },
+            "how_it_works": {
+              "type": "SharedSlice"
+            },
+            "pros_list_block": {
+              "type": "SharedSlice"
+            },
+            "text_block": {
+              "type": "SharedSlice"
+            },
             "hero_banner": {
               "type": "SharedSlice"
             }
