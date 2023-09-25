@@ -1,0 +1,72 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"image": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+					"width": 3456,
+					"height": 4320
+				},
+				"url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a",
+				"width": 3456,
+				"height": 4320,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			},
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla et eiusmod culpa ullamco elit proident nulla dolor laboris adipisicing ipsum. Irure deserunt nostrud exercitation mollit nostrud nisi aute."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Est officia excepteur magna."
+						}
+					}
+				]
+			},
+			"name_helper_text": {
+				"__TYPE__": "FieldContent",
+				"value": "favorite",
+				"type": "Text"
+			},
+			"email_helper_text": {
+				"__TYPE__": "FieldContent",
+				"value": "flight",
+				"type": "Text"
+			},
+			"phone_helper_text": {
+				"__TYPE__": "FieldContent",
+				"value": "danger",
+				"type": "Text"
+			},
+			"button_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "rather",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

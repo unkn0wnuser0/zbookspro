@@ -1,0 +1,136 @@
+{
+  "id": "pricing",
+  "type": "SharedSlice",
+  "name": "Pricing",
+  "description": "Pricing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "services_included": {
+          "type": "Text",
+          "config": {
+            "label": "Services Included",
+            "placeholder": ""
+          }
+        },
+        "start_package_name": {
+          "type": "Text",
+          "config": {
+            "label": "Start Package Name",
+            "placeholder": ""
+          }
+        },
+        "full_package_name": {
+          "type": "Text",
+          "config": {
+            "label": "Full Package Name",
+            "placeholder": ""
+          }
+        },
+        "start_package_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Start Package Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "full_package_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Full Package Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "start_package_price": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Start Package Price",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "full_package_price": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Full Package Price",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "button_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Button Caption",
+            "placeholder": ""
+          }
+        },
+        "button_link": {
+          "type": "Link",
+          "config": {
+            "label": "Button Link",
+            "select": "document"
+          }
+        }
+      },
+      "items": {
+        "service": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Service",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "start_package_included": {
+          "type": "Boolean",
+          "config": {
+            "label": "Start Package Included",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "full_package_included": {
+          "type": "Boolean",
+          "config": {
+            "label": "Full Package Included",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        }
+      }
+    }
+  ]
+}

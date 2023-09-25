@@ -1,0 +1,50 @@
+{
+  "id": "partials",
+  "label": "Partials",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "socials": {
+        "type": "Group",
+        "config": {
+          "label": "Socials",
+          "fields": {
+            "icon": {
+              "type": "Image",
+              "config": {
+                "label": "Icon",
+                "constraint": {},
+                "thumbnails": []
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "select": null
+              }
+            },
+            "caption": {
+              "type": "Text",
+              "config": {
+                "label": "Caption",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "Logo",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}

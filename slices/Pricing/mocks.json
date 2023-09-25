@@ -1,0 +1,136 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco ex eiusmod enim adipisicing mollit cupidatat do minim dolore sit ad id sint."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu reprehenderit aliqua sit amet. Veniam voluptate eu officia ullamco ipsum deserunt aliquip laboris veniam dolor exercitation enim consectetur ea aute."
+						}
+					}
+				]
+			},
+			"services_included": {
+				"__TYPE__": "FieldContent",
+				"value": "hang",
+				"type": "Text"
+			},
+			"start_package_name": {
+				"__TYPE__": "FieldContent",
+				"value": "thank",
+				"type": "Text"
+			},
+			"full_package_name": {
+				"__TYPE__": "FieldContent",
+				"value": "tank",
+				"type": "Text"
+			},
+			"start_package_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ad qui qui amet sit eu."
+						}
+					}
+				]
+			},
+			"full_package_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Officia id aliquip sit incididunt aliquip irure irure adipisicing dolore mollit commodo magna."
+						}
+					}
+				]
+			},
+			"start_package_price": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Anim proident dolor ex et amet do. Eiusmod culpa culpa velit cupidatat nisi pariatur fugiat anim mollit occaecat laborum ut veniam ut. Reprehenderit sunt enim mollit officia cillum labore amet ex occaecat."
+						}
+					}
+				]
+			},
+			"full_package_price": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Consequat dolore amet tempor minim aute aute. Incididunt culpa eiusmod aliqua laboris excepteur anim laboris id enim excepteur irure non laboris anim mollit."
+						}
+					}
+				]
+			},
+			"button_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "melted",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"service",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "In incididunt commodo fugiat officia minim. Laborum eu proident cillum ea officia labore."
+									}
+								}
+							]
+						}
+					],
+					[
+						"start_package_included",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": true
+						}
+					],
+					[
+						"full_package_included",
+						{
+							"__TYPE__": "BooleanContent",
+							"value": false
+						}
+					]
+				]
+			}
+		]
+	}
+]

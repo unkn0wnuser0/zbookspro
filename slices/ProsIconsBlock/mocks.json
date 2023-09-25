@@ -1,0 +1,89 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Lorem occaecat dolor laboris incididunt voluptate nostrud sunt ea ut. Aliqua adipisicing pariatur ullamco ea fugiat proident tempor id id excepteur duis deserunt nulla. Eu dolore eiusmod qui laboris eiusmod aute in enim consectetur exercitation Lorem cillum officia ad fugiat."
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Quis consequat incididunt consequat officia velit excepteur nulla reprehenderit et nisi duis velit consectetur nulla Lorem. Tempor reprehenderit qui cupidatat do proident nisi est velit ea proident officia duis quis duis tempor."
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"icon",
+						{
+							"__TYPE__": "ImageContent",
+							"origin": {
+								"id": "main",
+								"url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+								"width": 3344,
+								"height": 2509
+							},
+							"url": "https://images.unsplash.com/photo-1560762484-813fc97650a0",
+							"width": 3344,
+							"height": 2509,
+							"edit": {
+								"zoom": 1,
+								"crop": {
+									"x": 0,
+									"y": 0
+								},
+								"background": "transparent"
+							},
+							"thumbnails": {}
+						}
+					],
+					[
+						"title",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Quis sint ut sint eiusmod. Sit et incididunt nostrud deserunt Lorem laborum laborum proident. Veniam nisi magna anim officia."
+									}
+								}
+							]
+						}
+					],
+					[
+						"description",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Velit dolor et aute laborum pariatur minim est fugiat cupidatat. Exercitation eu laboris dolore dolore ea sint dolore. Aliquip enim labore velit dolore."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
+]

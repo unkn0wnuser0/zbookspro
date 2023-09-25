@@ -1,0 +1,33 @@
+{
+  "id": "header",
+  "label": "Header",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "navigation_links": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation Links",
+          "fields": {
+            "caption": {
+              "type": "Text",
+              "config": {
+                "label": "Caption",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "select": "document"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

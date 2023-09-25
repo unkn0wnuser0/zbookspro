@@ -1,0 +1,73 @@
+{
+  "id": "contact_form",
+  "type": "SharedSlice",
+  "name": "ContactForm",
+  "description": "ContactForm",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Title",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "name_helper_text": {
+          "type": "Text",
+          "config": {
+            "label": "Name Helper Text",
+            "placeholder": ""
+          }
+        },
+        "email_helper_text": {
+          "type": "Text",
+          "config": {
+            "label": "Email Helper Text",
+            "placeholder": ""
+          }
+        },
+        "phone_helper_text": {
+          "type": "Text",
+          "config": {
+            "label": "Phone Helper Text",
+            "placeholder": ""
+          }
+        },
+        "button_caption": {
+          "type": "Text",
+          "config": {
+            "label": "Button Caption",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
