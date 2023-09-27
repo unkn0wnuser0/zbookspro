@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  height: 90vh;
 
   @include media('<tablet-v') {
     text-align: center;

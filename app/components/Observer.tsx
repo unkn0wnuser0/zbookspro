@@ -6,7 +6,7 @@ export const createObserver = ({
   threshold = 0,
   freeze = true,
 }: {
-  element: HTMLElement | Element
+  element: HTMLElement | null
   animationIn: Function
   animationOut?: Function
   rootMargin: string
@@ -20,7 +20,7 @@ export const createObserver = ({
           animationIn(element)
 
           if (freeze) {
-            observer.unobserve(element)
+            observer.unobserve(element as Element)
             return
           }
         } else {
@@ -30,5 +30,6 @@ export const createObserver = ({
     },
     { rootMargin, threshold }
   )
-  observer.observe(element)
+  observer.observe(element as Element)
+  return observer
 }

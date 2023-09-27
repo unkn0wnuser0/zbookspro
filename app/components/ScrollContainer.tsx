@@ -46,16 +46,13 @@ export default function ScrollContainer({ children }: Children) {
     scrollY(wrapper)
   }
 
-  const logging = () => {
-    console.log('logging')
-  }
-
   useEffect(() => {
     frame.current = requestAnimationFrame(animate)
 
     return () => {
       // wrapper.current!.style.transform = `translateY(-${0}px)`
       cancelAnimationFrame(frame.current)
+      scroll.current = 0
     }
   }, [])
 
@@ -84,12 +81,7 @@ export default function ScrollContainer({ children }: Children) {
   return (
     <div className='App'>
       <div className='app__wrapper' ref={wrapper}>
-        <AnimatePresence mode='wait'>
-          {children}
-          {/* {React.Children.map(children, (child) =>
-            React.cloneElement(child, { logging: logging })
-          )} */}
-        </AnimatePresence>
+        <AnimatePresence mode='wait'>{children}</AnimatePresence>
       </div>
     </div>
   )

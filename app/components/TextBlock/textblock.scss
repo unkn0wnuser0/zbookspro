@@ -25,4 +25,8 @@
 
 .textblock__paragraphs {
   @extend %text-18;
+
+  p {
+    visibility: hidden;
+  }
 }
