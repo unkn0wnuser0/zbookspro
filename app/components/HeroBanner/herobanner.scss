@@ -9,11 +9,20 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @include media('<tablet-v') {
+    text-align: center;
+    flex-direction: column-reverse;
+  }
 }
 
 .herobanner__content__wrapper{
   width: 50%;
   padding: 0 6.4rem;
+
+  @include media('<tablet-v') {
+    width: unset;
+  }
 }
 
 .herobanner__title{
@@ -28,7 +37,12 @@
 
 .herobanner__image__wrapper{
   padding: 0 2.4rem;
-  width: 50%
+  width: 50%;
+
+  @include media('<tablet-v') {
+    margin-bottom: 3.6rem;
+    width: unset;
+  }
 }
 
 .herobanner__image{

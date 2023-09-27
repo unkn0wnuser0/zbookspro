@@ -1,14 +1,25 @@
+@import '../../styles/index.scss';
+
 .table__icon  {
+  @include media('<duo') {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
   &.checked{
 
   }
 
   &.unchecked{
-
+    @include media('<duo') {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
   }
 }
 
-.pricing__line__mark__icon startpackage {
+.pricing__line__mark__icon {
+  justify-self: center;
+
   &.startpackage{
 
   }
@@ -27,55 +38,85 @@
 }
 
 .pricing__title__wrapper {
-
+  text-align: center;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 6.4rem;
 }
 
 .pricing__title {
+  @extend %title-52;
+  margin-bottom: 3.6rem;
 
+  strong {
+    color: $color-black;
+  }
 }
 
 .pricing__description {
-
+  @extend %text-18;
 }
 
 .pricing__table__wrapper {
+  width: 90%;
+  margin: auto;
+}
 
+.pricing__table__heading__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: 3.6rem;
 }
 
 .pricing__included {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
+  @extend %title-28;
+  font-weight: 800;
+
+  @include media('<duo') {
+    font-size: 2.4rem;
+  }
 }
 
-.pricing__startpackage__wrapper {
-
+.pricing__package__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1.6rem;
 }
 
-.pricing__startpackage__title {
+.pricing__package__title {
+  @extend %title-28;
+  font-weight: 800;
+  margin-bottom: 1.6rem;
 
+  @include media('<duo') {
+    font-size: 2.4rem;
+  }
 }
 
-.pricing__startpackage__description {
-
+.pricing__package__description {
+  @extend %text-14;
 }
 
-.pricing__startpackage__price {
+.pricing__package__price {
+  @extend %title-28;
+  font-weight: 500;
 
-}
+  @include media('<duo') {
+    font-size: 2.2rem;
+  }
 
-.pricing__fullpackage__wrapper {
-
-}
-
-.pricing__fullpackage__title {
-
-}
-
-.pricing__fullpackage__description {
-
-}
-
-.pricing__fullpackage__price {
-
+  strong {
+    font-weight: 800;
+    color: $color-red;
+  }
 }
 
 .pricing__lines__wrapper {
@@ -83,11 +124,32 @@
 }
 
 .pricing__line__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 1.6rem 0;
 
+  &:nth-of-type(odd) {
+    background-color: $color-gray;
+    border-radius: 1.6rem;
+  }
+
+  @include media('<duo') {
+    padding: 0.8rem 0;
+  }
 }
 
 .pricing__line__caption {
+  @extend %text-18;
+  padding-left: 2.4rem;
 
+  @include media('<duo') {
+    font-size: 1.6rem;
+  }
+
+  p {
+    margin-bottom: unset;
+  }
 }
 
 .pricing__check {
@@ -107,5 +169,27 @@
 }
 
 .pricing__button {
+  display: block;
+  margin: 4.8rem auto 6.4rem;
+  width: 25%;
 
+  @include media('<duo') {
+    width: 75%;
+  }
 }
+
+// .package__wrapper {
+
+// }
+
+// .package__title {
+
+// }
+
+// .package__description {
+
+// }
+
+// .package__price {
+
+// }

@@ -10,11 +10,25 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @include media('<duo') {
+    flex-direction: column;
+  }
 }
 
 .proslist__image__wrapper {
   width: 50%;
   padding: 0 3.6rem;
+
+  @include media('<tablet-v') {
+    width: 40%;
+  }
+
+  @include media('<duo') {
+    height: 30rem;
+    width: 100%;
+    margin-bottom: 4.8rem;
+  }
 
   img {
     width: 100%;
@@ -26,16 +40,33 @@
 .proslist__content__wrapper {
   width: 50%;
   padding: 0 6.4rem;
+
+  @include media('<tablet-v') {
+    width: 60%;
+  }
+
+  @include media('<duo') {
+    width: 100%;
+    padding: 0 4.8rem;
+  }
 }
 
 .proslist__title {
   @extend %title-36;
   margin-bottom: 3.6rem;
+
+  @include media('<duo') {
+    text-align: center
+  }
 }
 
 .proslist__paragraphs {
   @extend %text-18;
   margin-bottom: 2.4rem;
+
+  @include media('<duo') {
+    text-align: center
+  }
 }
 
 .proslist__list__wrapper {
@@ -52,7 +83,7 @@
 
 .proslist__list__point__icon__wrapper {
   width: 2.4rem;
-  height: 2.4rem;
+  // height: 2.4rem;
   position: relative;
   margin-right: 1.2rem;
   // display: flex;
@@ -62,7 +93,7 @@
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 

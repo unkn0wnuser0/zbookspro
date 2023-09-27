@@ -58,74 +58,76 @@ export default function Pricing({
           <div className='pricing__description'>
             <PrismicRichText field={data.primary.description} />
           </div>
+        </div>
 
-          {/* TABLE */}
+        {/* TABLE */}
 
-          <div className='pricing__table__wrapper'>
+        <div className='pricing__table__wrapper'>
+          <div className='pricing__table__heading__wrapper'>
             <div className='pricing__included'>
               {data.primary.services_included}
             </div>
 
             {/* PACKAGES */}
 
-            <div className='pricing__startpackage__wrapper'>
-              <div className='pricing__startpackage__title'>
+            <div className='pricing__package__wrapper'>
+              <div className='pricing__package__title'>
                 {data.primary.start_package_name}
               </div>
-              <div className='pricing__startpackage__description'>
+              <div className='pricing__package__description'>
                 <PrismicRichText
                   field={data.primary.start_package_description}
                 />
               </div>
-              <div className='pricing__startpackage__price'>
+              <div className='pricing__package__price'>
                 <PrismicRichText field={data.primary.start_package_price} />
               </div>
             </div>
-            <div className='pricing__fullpackage__wrapper'>
-              <div className='pricing__fullpackage__title'>
+            <div className='pricing__package__wrapper'>
+              <div className='pricing__package__title'>
                 {data.primary.full_package_name}
               </div>
-              <div className='pricing__fullpackage__description'>
+              <div className='pricing__package__description'>
                 <PrismicRichText
                   field={data.primary.full_package_description}
                 />
               </div>
-              <div className='pricing__fullpackage__price'>
+              <div className='pricing__package__price'>
                 <PrismicRichText field={data.primary.full_package_price} />
               </div>
             </div>
-            <div className='pricing__lines__wrapper'>
-              {data.items.map((element, index) => {
-                return (
-                  <div className='pricing__line__wrapper' key={index}>
-                    <div className='pricing__line__caption'>
-                      <PrismicRichText field={element.service} />
-                    </div>
-                    {packageCheck(element)}
-                    <figure className='pricing__line__mark__icon startpackage'>
-                      {element.start_package_included == true ? (
-                        <div className='pricing__check'></div>
-                      ) : (
-                        <div className='pricing__uncheck'></div>
-                      )}
-                    </figure>
-                    <figure className='pricing__line__mark__icon fullpackage'>
-                      {element.full_package_included == true ? (
-                        <div className='pricing__check'></div>
-                      ) : (
-                        <div className='pricing__uncheck'></div>
-                      )}
-                    </figure>
-                  </div>
-                )
-              })}
-            </div>
           </div>
-
-          <button className='pricing__button'>
-            {data.primary.button_caption}
-          </button>
+          <div className='pricing__lines__wrapper'>
+            {data.items.map((element, index) => {
+              return (
+                <div className='pricing__line__wrapper' key={index}>
+                  <div className='pricing__line__caption'>
+                    <PrismicRichText field={element.service} />
+                  </div>
+                  {packageCheck(element)}
+                  <figure className='pricing__line__mark__icon startpackage'>
+                    {element.start_package_included == true ? (
+                      <div className='pricing__check'></div>
+                    ) : (
+                      <div className='pricing__uncheck'></div>
+                    )}
+                  </figure>
+                  <figure className='pricing__line__mark__icon fullpackage'>
+                    {element.full_package_included == true ? (
+                      <div className='pricing__check'></div>
+                    ) : (
+                      <div className='pricing__uncheck'></div>
+                    )}
+                  </figure>
+                </div>
+              )
+            })}
+          </div>
         </div>
+
+        <button className='pricing__button'>
+          {data.primary.button_caption}
+        </button>
       </div>
     </div>
   )

@@ -1,39 +1,81 @@
+@import '../../styles/index.scss';
+
 .contactform {
 
 }
 
 .contactform__wrapper {
+  padding: 9.6rem 3.6rem;
+  background-color: $color-gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
+  @include media('<duo') {
+    flex-direction: column;
+  }
 }
 
 .contactform__image__wrapper {
+  width: 50%;
+  height: 80vh;
 
+  @include media('<duo') {
+    display: none;
+  }
+
+  .contactform__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
-.contactform__image {
 
-}
 
 .contactform__content__wrapper {
+  width: 50%;
+  padding: 0 3.6rem;
 
+  @include media('<duo') {
+    width: 100%;
+    text-align: center
+  }
 }
 
 .contactform__title {
+  @extend %title-36;
 
+  strong {
+    color: $color-black;
+  }
+
+  margin-bottom: 2.4rem;
 }
 
 .contactform__description {
-
+  @extend %text-18;
 }
 
 .contactform__inputs__wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.6rem;
+  margin-top: 3.6rem;
 
+  input {
+    height: 6.4rem;
+    background-color: $color-white;
+    border: 1px solid $color-darkgray;
+    border-radius: 1.6rem;
+    padding: 0 2.4rem;
+  }
 }
 
 .contactform__input__helper {
-
+  font-size: 1.8rem;
 }
 
 .contactform__button {
-
+  margin-top: 3.6rem;
 }

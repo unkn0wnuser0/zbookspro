@@ -17,6 +17,11 @@
   margin: auto;
   width: 80%;
   padding: 6.4rem 0;
+
+  @include media('<duo') {
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .howitworks__step__wrapper {
@@ -28,6 +33,14 @@
 
   &:nth-of-type(even) {
     flex-direction: row-reverse;
+  }
+
+  @include media('<duo') {
+    flex-direction: column;
+
+    &:nth-of-type(even) {
+      flex-direction: column;
+    }
   }
 }
 
@@ -60,5 +73,9 @@
     font-size: 1.4rem;
     list-style: disc;
     list-style-position: inside;
+
+    @include media('<tablet-v') {
+      font-size: 2.4rem;
+    }
   }
 }

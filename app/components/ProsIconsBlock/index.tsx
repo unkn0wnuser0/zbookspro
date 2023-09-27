@@ -21,30 +21,30 @@ export default function ProsIcons({
           <div className='prosicons__description'>
             <PrismicRichText field={data.primary.description} />
           </div>
-          <div className='prosicons__points__wrapper'>
-            {data.items.map((element, index) => {
-              return (
-                <div className='prosicons__point__wrapper' key={index}>
-                  <figure className='prosicons__point__icon__wrapper'>
-                    <PrismicNextImage
-                      className='prosicons__point__icon'
-                      field={element.icon}
-                      alt=''
-                      priority
-                    />
-                  </figure>
-                  <div className='prosicons__point__content__wrapper'>
-                    <div className='prosicons__point__title'>
-                      <PrismicRichText field={element.title} />
-                    </div>
-                    <div className='prosicons__point__description'>
-                      <PrismicRichText field={element.description} />
-                    </div>
+        </div>
+        <div className='prosicons__points__wrapper'>
+          {data.items.map((element, index) => {
+            return (
+              <div className='prosicons__point__wrapper' key={index}>
+                <figure className='prosicons__point__icon__wrapper'>
+                  <PrismicNextImage
+                    className='prosicons__point__icon'
+                    field={element.icon}
+                    alt=''
+                    priority
+                  />
+                </figure>
+                <div className='prosicons__point__content__wrapper'>
+                  <div className='prosicons__point__title'>
+                    <PrismicRichText field={element.title} />
+                  </div>
+                  <div className='prosicons__point__description'>
+                    <PrismicRichText field={element.description} />
                   </div>
                 </div>
-              )
-            })}
-          </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </div>
