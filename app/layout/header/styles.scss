@@ -1,0 +1,38 @@
+@import '../../styles/index.scss';
+
+
+.header {
+  z-index: 5;
+}
+
+.header__wrapper {
+  position: fixed;
+  padding: 2.4rem 3.6rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, 
+  rgb(255, 255, 255) 0%,
+  rgba(255, 255, 255, 0.85) 45%, 
+  rgba(255, 255, 255, 0) 100%);
+}
+
+.header__logo__wrapper {
+  cursor: pointer;
+}
+
+.header__links__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 3.6rem;
+}
+
+.header__link__wrapper {
+
+}
+
+.header__link {
+  @extend %link-16;
+  cursor: pointer;
+}
