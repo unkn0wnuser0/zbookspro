@@ -17,7 +17,7 @@ export const createObserver = ({
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          animationIn(element)
+          animationIn()
 
           if (freeze) {
             observer.unobserve(element as Element)
