@@ -27,7 +27,7 @@ export default async function RootLayout({
     <html>
       <body>
         <Header data={header} partials={partials} />
-        <Cursor speed={0.0025} />
+        {/* <Cursor speed={0.0025} /> */}
         {children}
       </body>
     </html>
