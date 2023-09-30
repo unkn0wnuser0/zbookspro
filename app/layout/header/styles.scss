@@ -34,5 +34,9 @@
 
 .header__link {
   @extend %link-16;
+  @extend %link--hidden;
+  line-height: 1.5;
+  font-size: 1.4rem;
+  font-weight: 600;
   cursor: pointer;
 }
