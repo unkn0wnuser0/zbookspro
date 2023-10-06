@@ -56,11 +56,11 @@ export default function ClientHome({
           <HeroBanner data={data.heroBanner} />
           <TextBlock data={data.textBlock} />
           <ProsList data={data.prosBlock} />
-          <AlignedTextBlock data={data.leftTextBlock} />
+          {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
           <HowItWorks data={data.howItWorksBlock} />
           <Pricing data={data.pricingBlock} partials={partials} />
           <ProsIcons data={data.prosIconsBlock} />
-          <Experience data={data.experienceBlock} />
+          {/* <Experience data={data.experienceBlock} /> */}
           <ContactForm data={data.contactForm} />
         </div>
       </div>
