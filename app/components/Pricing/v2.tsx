@@ -134,7 +134,7 @@ export default function Pricing_v2({
 
   return (
     <div className='pricing'>
-      <div className='pricing__wrapper' ref={wrapper}>
+      <div className='pricing__wrapper' id='pricing-anchor' ref={wrapper}>
         <div className='pricing__title__wrapper'>
           <div className='pricing__title' style={{ visibility: 'hidden' }}>
             <PrismicRichText field={data.primary.title} />

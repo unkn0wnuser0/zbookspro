@@ -151,7 +151,7 @@ export default function InterpolationScroll({ children }: Children) {
         const delta = targetY + scroll.current
 
         scroll.target += delta - scroll.current
-        scroll.current = scroll.target - 250
+        scroll.current = scroll.target + 250
       })
     })
   }, [children])

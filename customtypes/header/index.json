@@ -24,6 +24,13 @@
                 "label": "Link",
                 "select": "document"
               }
+            },
+            "anchor_div": {
+              "type": "Text",
+              "config": {
+                "label": "Anchor DIV",
+                "placeholder": ""
+              }
             }
           }
         }

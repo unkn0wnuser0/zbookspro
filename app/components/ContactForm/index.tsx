@@ -83,7 +83,7 @@ export default function ContactForm({
 
   return (
     <div className='contactform'>
-      <div className='contactform__wrapper' ref={wrapper}>
+      <div className='contactform__wrapper' ref={wrapper} id='form-anchor'>
         <figure
           className='contactform__image__wrapper'
           style={{ visibility: 'hidden' }}

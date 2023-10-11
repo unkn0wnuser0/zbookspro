@@ -57,7 +57,7 @@ export default function HowItWorks({
 
   return (
     <div className='howitworks'>
-      <div className='howitworks__wrapper' ref={wrapper}>
+      <div className='howitworks__wrapper' id='howitworks-anchor' ref={wrapper}>
         <div className='howitworks__title'>
           <PrismicRichText field={data.primary.title} />
         </div>

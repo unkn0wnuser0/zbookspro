@@ -38,7 +38,7 @@ export default function Logos({ data }: { data: Content.LogosSlice }) {
   }, [])
   return (
     <div className='logos'>
-      <div className='logos__wrapper' ref={wrapper}>
+      <div className='logos__wrapper' ref={wrapper} id='logos-anchor'>
         <div className='logos__title' style={{ visibility: 'hidden' }}>
           <PrismicRichText field={data.primary.title} />
         </div>

@@ -17,7 +17,6 @@ export default function Header({
   partials: Content.PartialsDocumentData
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
-  const timeline = GSAP.timeline()
 
   return (
     <div className='header'>
@@ -31,9 +30,13 @@ export default function Header({
           {data.navigation_links.map((element, index) => {
             return (
               <div className='header__link__wrapper' key={index}>
-                <PrismicNextLink className='header__link' field={element.link}>
+                <div
+                  className='header__link'
+                  id='anchor'
+                  data-target={element.anchor_div}
+                >
                   {element.caption}
-                </PrismicNextLink>
+                </div>
               </div>
             )
           })}

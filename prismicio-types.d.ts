@@ -59,6 +59,16 @@ export interface HeaderDocumentDataNavigationLinksItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.ContentRelationshipField;
+
+  /**
+   * Anchor DIV field in *Header → Navigation Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.navigation_links[].anchor_div
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  anchor_div: prismic.KeyTextField;
 }
 
 /**

@@ -15,7 +15,7 @@ import ProsIcons_v2 from './components/ProsIconsBlock/v2'
 import Pricing_v2 from './components/Pricing/v2'
 import CallToAction from './components/CallToAction'
 import Logos from './components/Logos'
-import InterpolationScroll from './components/interpScroll'
+import InterpolationScroll from './components/InterpScroll'
 
 export default function ClientHome({
   data: prismicData,
