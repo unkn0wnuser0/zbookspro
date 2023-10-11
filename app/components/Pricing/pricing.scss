@@ -67,6 +67,16 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   margin-bottom: 3.6rem;
+
+  &.v2 {
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 6.4rem;
+
+    @include media('<duo') {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 .pricing__included {
@@ -89,6 +99,18 @@
   align-items: center;
   text-align: center;
   padding: 0 1.6rem;
+
+  &.v2 {
+    border-radius: 2.4rem;
+    padding: 3.6rem 2.4rem;
+    &:nth-of-type(1) {
+      background-color: $color-gray;
+    }
+
+    &:nth-of-type(2) {
+      background-color: #FFDDE3;
+    }
+  }
 }
 
 .pricing__package__title {
@@ -109,6 +131,10 @@
   @extend %title-28;
   font-weight: 500;
 
+  &.v2 {
+    display: none;
+  }
+
   @include media('<duo') {
     font-size: 2.2rem;
   }
@@ -117,6 +143,20 @@
     font-weight: 800;
     color: $color-red;
   }
+}
+
+.pricing__package__services__wrapper {
+  margin: 2.4rem auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.4rem;
+  padding: 0 2.4rem;
+}
+
+.pricing__package__service__title {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 500;
 }
 
 .pricing__lines__wrapper {

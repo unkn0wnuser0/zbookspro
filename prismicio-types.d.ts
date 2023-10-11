@@ -96,6 +96,8 @@ export type HeaderDocument<Lang extends string = string> =
   >;
 
 type IndexDocumentDataSlicesSlice =
+  | LogosSlice
+  | CallToActionSlice
   | ExperienceBlockSlice
   | ContactFormSlice
   | AlignedTextBlockSlice
@@ -335,6 +337,81 @@ type AlignedTextBlockSliceVariation = AlignedTextBlockSliceDefault;
 export type AlignedTextBlockSlice = prismic.SharedSlice<
   "aligned_text_block",
   AlignedTextBlockSliceVariation
+>;
+
+/**
+ * Primary content in *CallToAction → Primary*
+ */
+export interface CallToActionSliceDefaultPrimary {
+  /**
+   * Title field in *CallToAction → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Paragraphs field in *CallToAction → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.primary.paragraphs
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  paragraphs: prismic.RichTextField;
+
+  /**
+   * Button Caption field in *CallToAction → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.primary.button_caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_caption: prismic.KeyTextField;
+
+  /**
+   * Image field in *CallToAction → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: call_to_action.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for CallToAction Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CallToActionSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CallToAction*
+ */
+type CallToActionSliceVariation = CallToActionSliceDefault;
+
+/**
+ * CallToAction Shared Slice
+ *
+ * - **API ID**: `call_to_action`
+ * - **Description**: CallToAction
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CallToActionSlice = prismic.SharedSlice<
+  "call_to_action",
+  CallToActionSliceVariation
 >;
 
 /**
@@ -708,6 +785,123 @@ export type HowItWorksSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Logos → Primary*
+ */
+export interface LogosSliceDefaultPrimary {
+  /**
+   * Title field in *Logos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logos.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Logos → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logos.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Logos → Items*
+ */
+export interface LogosSliceDefaultItem {
+  /**
+   * Logo field in *Logos → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logos.items[].logo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  logo: prismic.ImageField<never>;
+
+  /**
+   * Company Name field in *Logos → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logos.items[].company_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  company_name: prismic.KeyTextField;
+
+  /**
+   * Link field in *Logos → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: logos.items[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Logos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LogosSliceDefaultPrimary>,
+  Simplify<LogosSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Logos*
+ */
+type LogosSliceVariation = LogosSliceDefault;
+
+/**
+ * Logos Shared Slice
+ *
+ * - **API ID**: `logos`
+ * - **Description**: Logos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosSlice = prismic.SharedSlice<"logos", LogosSliceVariation>;
+
+/**
+ * Default variation for Package Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PackageSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Package*
+ */
+type PackageSliceVariation = PackageSliceDefault;
+
+/**
+ * Package Shared Slice
+ *
+ * - **API ID**: `package`
+ * - **Description**: Package
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PackageSlice = prismic.SharedSlice<
+  "package",
+  PackageSliceVariation
+>;
+
+/**
  * Primary content in *Pricing → Primary*
  */
 export interface PricingSliceDefaultPrimary {
@@ -873,9 +1067,112 @@ export type PricingSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Pricing → Primary*
+ */
+export interface PricingSliceVariation2Primary {
+  /**
+   * Title field in *Pricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Pricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Start Package Name field in *Pricing → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.start_package_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  start_package_name: prismic.KeyTextField;
+
+  /**
+   * Full Package Name field in *Pricing → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.full_package_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  full_package_name: prismic.KeyTextField;
+
+  /**
+   * Start Package Description field in *Pricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.start_package_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  start_package_description: prismic.RichTextField;
+
+  /**
+   * Full Package Description field in *Pricing → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.primary.full_package_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  full_package_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Pricing → Items*
+ */
+export interface PricingSliceVariation2Item {
+  /**
+   * Service field in *Pricing → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.items[].service
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  service: prismic.RichTextField;
+
+  /**
+   * Service Icon field in *Pricing → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pricing.items[].service_icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  service_icon: prismic.ImageField<never>;
+}
+
+/**
+ * Variation2 variation for Pricing Slice
+ *
+ * - **API ID**: `variation2`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PricingSliceVariation2 = prismic.SharedSliceVariation<
+  "variation2",
+  Simplify<PricingSliceVariation2Primary>,
+  Simplify<PricingSliceVariation2Item>
+>;
+
+/**
  * Slice variation for *Pricing*
  */
-type PricingSliceVariation = PricingSliceDefault;
+type PricingSliceVariation = PricingSliceDefault | PricingSliceVariation2;
 
 /**
  * Pricing Shared Slice
@@ -963,9 +1260,74 @@ export type ProsIconsBlockSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProsIconsBlock → Primary*
+ */
+export interface ProsIconsBlockSliceVariation2Primary {
+  /**
+   * Title field in *ProsIconsBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pros_icons_block.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *ProsIconsBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pros_icons_block.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *ProsIconsBlock → Items*
+ */
+export interface ProsIconsBlockSliceVariation2Item {
+  /**
+   * Icon field in *ProsIconsBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pros_icons_block.items[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * Description field in *ProsIconsBlock → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pros_icons_block.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Variation2 variation for ProsIconsBlock Slice
+ *
+ * - **API ID**: `variation2`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProsIconsBlockSliceVariation2 = prismic.SharedSliceVariation<
+  "variation2",
+  Simplify<ProsIconsBlockSliceVariation2Primary>,
+  Simplify<ProsIconsBlockSliceVariation2Item>
+>;
+
+/**
  * Slice variation for *ProsIconsBlock*
  */
-type ProsIconsBlockSliceVariation = ProsIconsBlockSliceDefault;
+type ProsIconsBlockSliceVariation =
+  | ProsIconsBlockSliceDefault
+  | ProsIconsBlockSliceVariation2;
 
 /**
  * ProsIconsBlock Shared Slice
@@ -1160,6 +1522,10 @@ declare module "@prismicio/client" {
       AlignedTextBlockSliceDefaultPrimary,
       AlignedTextBlockSliceVariation,
       AlignedTextBlockSliceDefault,
+      CallToActionSlice,
+      CallToActionSliceDefaultPrimary,
+      CallToActionSliceVariation,
+      CallToActionSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
@@ -1178,16 +1544,30 @@ declare module "@prismicio/client" {
       HowItWorksSliceDefaultItem,
       HowItWorksSliceVariation,
       HowItWorksSliceDefault,
+      LogosSlice,
+      LogosSliceDefaultPrimary,
+      LogosSliceDefaultItem,
+      LogosSliceVariation,
+      LogosSliceDefault,
+      PackageSlice,
+      PackageSliceVariation,
+      PackageSliceDefault,
       PricingSlice,
       PricingSliceDefaultPrimary,
       PricingSliceDefaultItem,
+      PricingSliceVariation2Primary,
+      PricingSliceVariation2Item,
       PricingSliceVariation,
       PricingSliceDefault,
+      PricingSliceVariation2,
       ProsIconsBlockSlice,
       ProsIconsBlockSliceDefaultPrimary,
       ProsIconsBlockSliceDefaultItem,
+      ProsIconsBlockSliceVariation2Primary,
+      ProsIconsBlockSliceVariation2Item,
       ProsIconsBlockSliceVariation,
       ProsIconsBlockSliceDefault,
+      ProsIconsBlockSliceVariation2,
       ProsListBlockSlice,
       ProsListBlockSliceDefaultPrimary,
       ProsListBlockSliceDefaultItem,

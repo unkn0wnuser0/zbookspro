@@ -1,0 +1,51 @@
+@import '../../styles/index.scss';
+
+.logos {
+
+}
+
+.logos__wrapper {
+  margin: 12.8rem 3.6rem;
+}
+
+.logos__title {
+  @extend %title-48;
+  font-size: 4.2rem;
+  text-align: center;
+  margin-bottom: 3.6rem;
+}
+
+.logos__icons__wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+  @include media('<duo') {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.logos__icon__card {
+  justify-content: center;
+  width: 25%;
+  padding: 1.2rem;
+
+  @include media('<duo') {
+    min-width: 50%;
+  }
+}
+
+.logos__icon__wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

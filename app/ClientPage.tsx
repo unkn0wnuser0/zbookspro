@@ -11,6 +11,11 @@ import Pricing from './components/Pricing'
 import ProsIcons from './components/ProsIconsBlock'
 import Experience from './components/Experience'
 import ContactForm from './components/ContactForm'
+import ProsIcons_v2 from './components/ProsIconsBlock/v2'
+import Pricing_v2 from './components/Pricing/v2'
+import CallToAction from './components/CallToAction'
+import Logos from './components/Logos'
+import InterpolationScroll from './components/interpScroll'
 
 export default function ClientHome({
   data: prismicData,
@@ -37,33 +42,53 @@ export default function ClientHome({
     }) as Content.HowItWorksSlice,
     pricingBlock: prismicData.slices.find((element) => {
       if (element.slice_type === 'pricing') return element
-    }) as Content.PricingSlice,
+    }) as Content.PricingSliceDefault,
     prosIconsBlock: prismicData.slices.find((element) => {
-      if (element.slice_type === 'pros_icons_block') return element
+      if (
+        element.slice_type === 'pros_icons_block' &&
+        element.variation === 'default'
+      )
+        return element
     }) as Content.ProsIconsBlockSlice,
+    prosIconsBlock_v2: prismicData.slices.find((element) => {
+      if (
+        element.slice_type === 'pros_icons_block' &&
+        element.variation === 'variation2'
+      )
+        return element
+    }) as Content.ProsIconsBlockSliceVariation2,
     experienceBlock: prismicData.slices.find((element) => {
       if (element.slice_type === 'experience_block') return element
     }) as Content.ExperienceBlockSlice,
+    logos: prismicData.slices.find((element) => {
+      if (element.slice_type === 'logos') return element
+    }) as Content.LogosSlice,
     contactForm: prismicData.slices.find((element) => {
       if (element.slice_type === 'contact_form') return element
     }) as Content.ContactFormSlice,
+    callToAction: prismicData.slices.find((element) => {
+      if (element.slice_type === 'call_to_action') return element
+    }) as Content.CallToActionSlice,
   }
 
   return (
-    <ScrollContainer>
+    <InterpolationScroll>
       <div className='index'>
         <div className='index__wrapper'>
           <HeroBanner data={data.heroBanner} />
-          <TextBlock data={data.textBlock} />
+          <ProsIcons_v2 data={data.prosIconsBlock_v2} />
+          {/* <TextBlock data={data.textBlock} /> */}
           <ProsList data={data.prosBlock} />
           {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
           <HowItWorks data={data.howItWorksBlock} />
-          <Pricing data={data.pricingBlock} partials={partials} />
+          <CallToAction data={data.callToAction} />
+          <Pricing_v2 data={data.pricingBlock} partials={partials} />
           <ProsIcons data={data.prosIconsBlock} />
+          <Logos data={data.logos} />
           {/* <Experience data={data.experienceBlock} /> */}
           <ContactForm data={data.contactForm} />
         </div>
       </div>
-    </ScrollContainer>
+    </InterpolationScroll>
   )
 }
