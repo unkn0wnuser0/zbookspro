@@ -42,7 +42,7 @@ export default function ClientHome({
     }) as Content.HowItWorksSlice,
     pricingBlock: prismicData.slices.find((element) => {
       if (element.slice_type === 'pricing') return element
-    }) as Content.PricingSliceDefault,
+    }) as Content.PricingSlice,
     prosIconsBlock: prismicData.slices.find((element) => {
       if (
         element.slice_type === 'pros_icons_block' &&
@@ -66,10 +66,14 @@ export default function ClientHome({
     contactForm: prismicData.slices.find((element) => {
       if (element.slice_type === 'contact_form') return element
     }) as Content.ContactFormSlice,
-    callToAction: prismicData.slices.find((element) => {
-      if (element.slice_type === 'call_to_action') return element
-    }) as Content.CallToActionSlice,
+    callToAction: [] as Content.CallToActionSlice[],
   }
+
+  prismicData.slices.find((element) => {
+    if (element.slice_type === 'call_to_action') {
+      data.callToAction.push(element)
+    }
+  })
 
   return (
     <InterpolationScroll>
@@ -81,11 +85,12 @@ export default function ClientHome({
           <ProsList data={data.prosBlock} />
           {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
           <HowItWorks data={data.howItWorksBlock} />
-          <CallToAction data={data.callToAction} />
-          <Pricing_v2 data={data.pricingBlock} partials={partials} />
+          <CallToAction data={data.callToAction[0]} />
+          <Pricing_v2 index data={data.pricingBlock} />
           <ProsIcons data={data.prosIconsBlock} />
           <Logos data={data.logos} />
           {/* <Experience data={data.experienceBlock} /> */}
+          <CallToAction data={data.callToAction[1]} />
           <ContactForm data={data.contactForm} />
         </div>
       </div>

@@ -3,7 +3,7 @@
 import './pricing.scss'
 
 import { Content } from '@prismicio/client'
-import { PrismicNextImage } from '@prismicio/next'
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import { PrismicRichText } from '@prismicio/react'
 import { useEffect, useRef } from 'react'
 import { createObserver } from '../Observer'
@@ -11,10 +11,10 @@ import GSAP from 'gsap'
 
 export default function Pricing_v2({
   data,
-  partials,
+  index,
 }: {
-  data: Content.PricingSliceDefault
-  partials: Content.PartialsDocumentData
+  data: Content.PricingSlice
+  index: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -91,47 +91,6 @@ export default function Pricing_v2({
     })
   }, [])
 
-  const packageCheck = (element: Content.PricingSliceDefaultItem) => {
-    const checked = () => {
-      return (
-        <PrismicNextImage
-          className='table__icon checked'
-          field={partials.checked_icon}
-          alt=''
-          priority
-        />
-      )
-    }
-
-    const notchecked = () => {
-      return (
-        <PrismicNextImage
-          className='table__icon unchecked'
-          field={partials.unchecked_icon}
-          alt=''
-          priority
-        />
-      )
-    }
-
-    return (
-      <>
-        <figure
-          className='pricing__line__mark__icon startpackage'
-          style={{ visibility: 'hidden' }}
-        >
-          {element.start_package_included == true ? checked() : notchecked()}
-        </figure>
-        <figure
-          className='pricing__line__mark__icon fullpackage'
-          style={{ visibility: 'hidden' }}
-        >
-          {element.full_package_included == true ? checked() : notchecked()}
-        </figure>
-      </>
-    )
-  }
-
   return (
     <div className='pricing'>
       <div className='pricing__wrapper' id='pricing-anchor' ref={wrapper}>
@@ -165,22 +124,6 @@ export default function Pricing_v2({
                   field={data.primary.start_package_description}
                 />
               </div>
-              <div className='pricing__package__price v2'>
-                <PrismicRichText field={data.primary.start_package_price} />
-              </div>
-              <div className='pricing__package__services__wrapper'>
-                {data.items.map((element, index) => {
-                  if (element.start_package_included)
-                    return (
-                      <div
-                        className='pricing__package__service__title'
-                        key={index}
-                      >
-                        <PrismicRichText field={element.service} />
-                      </div>
-                    )
-                })}
-              </div>
             </div>
             <div
               className='pricing__package__wrapper v2'
@@ -194,25 +137,21 @@ export default function Pricing_v2({
                   field={data.primary.full_package_description}
                 />
               </div>
-              <div className='pricing__package__price v2'>
-                <PrismicRichText field={data.primary.full_package_price} />
-              </div>
-              <div className='pricing__package__services__wrapper'>
-                {data.items.map((element, index) => {
-                  if (element.full_package_included)
-                    return (
-                      <div
-                        className='pricing__package__service__title'
-                        key={index}
-                      >
-                        <PrismicRichText field={element.service} />
-                      </div>
-                    )
-                })}
-              </div>
             </div>
           </div>
         </div>
+        {index && (
+          <div className='cta__button__wrapper'>
+            <PrismicNextLink
+              className='cta__link'
+              field={data.primary.button_link}
+            >
+              <button className='cta__button pricing'>
+                {data.primary.button_caption}
+              </button>
+            </PrismicNextLink>
+          </div>
+        )}
       </div>
     </div>
   )

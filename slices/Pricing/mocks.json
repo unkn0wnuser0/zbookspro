@@ -100,36 +100,7 @@
 		"items": [
 			{
 				"__TYPE__": "GroupItemContent",
-				"value": [
-					[
-						"service",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "In incididunt commodo fugiat officia minim. Laborum eu proident cillum ea officia labore."
-									}
-								}
-							]
-						}
-					],
-					[
-						"start_package_included",
-						{
-							"__TYPE__": "BooleanContent",
-							"value": true
-						}
-					],
-					[
-						"full_package_included",
-						{
-							"__TYPE__": "BooleanContent",
-							"value": false
-						}
-					]
-				]
+				"value": []
 			}
 		]
 	},
@@ -190,51 +161,24 @@
 						}
 					}
 				]
+			},
+			"button_caption": {
+				"__TYPE__": "FieldContent",
+				"value": "whispered",
+				"type": "Text"
+			},
+			"button_link": {
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "DocumentLink",
+					"id": "mock_document_id"
+				}
 			}
 		},
 		"items": [
 			{
 				"__TYPE__": "GroupItemContent",
-				"value": [
-					[
-						"service",
-						{
-							"__TYPE__": "StructuredTextContent",
-							"value": [
-								{
-									"type": "paragraph",
-									"content": {
-										"text": "In deserunt culpa consequat ad laboris et ea amet deserunt consequat esse ipsum. Est irure irure esse."
-									}
-								}
-							]
-						}
-					],
-					[
-						"service_icon",
-						{
-							"__TYPE__": "ImageContent",
-							"origin": {
-								"id": "main",
-								"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
-								"width": 5616,
-								"height": 3744
-							},
-							"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
-							"width": 5616,
-							"height": 3744,
-							"edit": {
-								"zoom": 1,
-								"crop": {
-									"x": 0,
-									"y": 0
-								},
-								"background": "transparent"
-							},
-							"thumbnails": {}
-						}
-					]
-				]
+				"value": []
 			}
 		]
 	}

@@ -70,18 +70,26 @@ export default function CallToAction({
           <PrismicNextImage field={data.primary.image} alt='' priority />{' '}
         </figure>
         <div className='cta__content__wrapper'>
-          <div className='cta__content__title' style={{ visibility: 'hidden' }}>
-            <PrismicRichText field={data.primary.title} />
-          </div>
+          {data.primary.title[0]?.type && (
+            <div
+              className='cta__content__title'
+              style={{ visibility: 'hidden' }}
+            >
+              <PrismicRichText field={data.primary.title} />
+            </div>
+          )}
+
           <div
             className='cta__content__paragraphs'
             style={{ visibility: 'hidden' }}
           >
             <PrismicRichText field={data.primary.paragraphs} />
           </div>
-          <button className='cta__button' style={{ visibility: 'hidden' }}>
-            {data.primary.button_caption}
-          </button>
+          {data.primary.button_caption && (
+            <button className='cta__button' style={{ visibility: 'hidden' }}>
+              {data.primary.button_caption}
+            </button>
+          )}
         </div>
       </div>
     </div>

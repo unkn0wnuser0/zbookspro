@@ -3,6 +3,7 @@
 import React, { RefObject, use, useEffect, useRef, useState } from 'react'
 import { useEventListener, useIsomorphicLayoutEffect } from 'usehooks-ts'
 import GSAP from 'gsap'
+import { usePathname } from 'next/navigation'
 
 type Children = {
   children: string | JSX.Element | JSX.Element[] | React.ReactNode
@@ -45,6 +46,7 @@ export default function InterpolationScroll({ children }: Children) {
   const wrapper = useRef<HTMLDivElement>(null)
   const frame = useRef(0)
   const scrollDisabled = useRef(false)
+  const pathname = usePathname()
 
   const [windowSize, setWindowSize] = useState<WindowSize>({
     width: 0,
@@ -52,6 +54,8 @@ export default function InterpolationScroll({ children }: Children) {
     wrapperHeight: 0,
     wrapperWidth: 0,
   })
+
+  const [anchors, setAnchors] = useState<NodeListOf<Element>>([])
 
   const handleSize = () => {
     setWindowSize({
@@ -131,30 +135,47 @@ export default function InterpolationScroll({ children }: Children) {
   useEffect(() => {
     frame.current = requestAnimationFrame(animate)
 
+    const anchorsDivs = document.querySelectorAll('#anchor')
+    setAnchors(anchorsDivs)
+
     return () => {
       cancelAnimationFrame(frame.current)
       document.body.style.height = '0px'
       scroll.current = 0
       scroll.target = 0
+      scroll.limit = 0
+      scroll.min = 0
     }
-  }, [])
+  }, [pathname])
+
+  const scrollToAnchor = (element: Element) => {
+    const targetDivName = element.getAttribute('data-target')!
+    const targetDiv = document.getElementById(targetDivName)!
+    const targetY = targetDiv.getBoundingClientRect().top
+    const delta = targetY + scroll.current
+
+    scroll.target = targetY
+    scroll.current = scroll.target
+
+    // scroll.target += delta - scroll.current
+    // scroll.current = scroll.target
+  }
 
   useEffect(() => {
-    const anchors = document.querySelectorAll('#anchor')
-    const dataTabs = document.querySelectorAll('#scroll-disable')
-
     anchors.forEach((element) => {
       element.addEventListener('click', () => {
-        const targetDivName = element.getAttribute('data-target')!
-        const targetDiv = document.getElementById(targetDivName)!
-        const targetY = targetDiv.getBoundingClientRect().top
-        const delta = targetY + scroll.current
-
-        scroll.target += delta - scroll.current
-        scroll.current = scroll.target + 250
+        scrollToAnchor(element)
       })
     })
-  }, [children])
+
+    return () => {
+      anchors.forEach((element) => {
+        element.addEventListener('click', () => {
+          scrollToAnchor(element)
+        })
+      })
+    }
+  }, [anchors])
 
   useEffect(() => {
     const setWrapperHeight = () => {

@@ -102,35 +102,7 @@
           }
         }
       },
-      "items": {
-        "service": {
-          "type": "StructuredText",
-          "config": {
-            "label": "Service",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
-          }
-        },
-        "start_package_included": {
-          "type": "Boolean",
-          "config": {
-            "label": "Start Package Included",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
-          }
-        },
-        "full_package_included": {
-          "type": "Boolean",
-          "config": {
-            "label": "Full Package Included",
-            "default_value": false,
-            "placeholder_true": "true",
-            "placeholder_false": "false"
-          }
-        }
-      }
+      "items": {}
     },
     {
       "id": "variation2",
@@ -189,27 +161,23 @@
             "allowTargetBlank": true,
             "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
-        }
-      },
-      "items": {
-        "service": {
-          "type": "StructuredText",
+        },
+        "button_caption": {
+          "type": "Text",
           "config": {
-            "label": "Service",
-            "placeholder": "",
-            "allowTargetBlank": true,
-            "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+            "label": "Button Caption",
+            "placeholder": ""
           }
         },
-        "service_icon": {
-          "type": "Image",
+        "button_link": {
+          "type": "Link",
           "config": {
-            "label": "Service Icon",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Button Link",
+            "select": "document"
           }
         }
-      }
+      },
+      "items": {}
     }
   ]
 }

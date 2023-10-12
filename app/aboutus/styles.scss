@@ -1,0 +1,95 @@
+@import '../styles/index.scss';
+
+.aboutus {
+
+}
+
+.aboutus__wrapper {
+  padding-top: 9.6rem;
+}
+
+.aboutus__heading__wrapper {
+  margin: 2.4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutus__title {
+  margin-bottom: 3.6rem;
+  @extend %title-52;
+}
+
+.aboutus__description {
+  @extend %text-18;
+  width: 60%;
+  margin: auto;
+  text-align: center;
+}
+
+.aboutus__team__wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 3.6rem;
+  margin-bottom: 6.4rem;
+
+  @include media('<duo') {
+    flex-direction: column;
+  }
+}
+
+.aboutus__team__member__wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 3.6rem;
+
+  &:nth-of-type(1),
+  &:nth-of-type(2) {
+    width: 45%;
+
+    @include media('<duo') {
+      width: 100%;
+    }
+  }
+
+  &:nth-of-type(3),
+  &:nth-of-type(4),
+  &:nth-of-type(5) {
+    width: 30%;
+
+    @include media('<duo') {
+      width: 100%;
+    }
+  }
+}
+
+.aboutus__team__member__photo__wrapper {
+  width: 16.8rem;
+  height: 16.8rem;
+  border-radius: 50%;
+  margin-bottom: 3.6rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.aboutus__team__member__name {
+  @extend %title-24;
+  margin-bottom: 1.6rem;
+}
+
+.aboutus__team__member__position {
+  @extend %text-18;
+  margin-bottom: 2.4rem;
+}
+
+.aboutus__team__member__description {
+  @extend %text-14;
+}

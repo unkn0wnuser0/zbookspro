@@ -20,6 +20,10 @@
 
 .header__logo__wrapper {
   cursor: pointer;
+
+  @include media('<duo') {
+    width: 4.8rem;
+  }
 }
 
 .header__links__wrapper {

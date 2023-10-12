@@ -1,0 +1,28 @@
+@import '../styles/index.scss';
+
+.howitworks {
+
+}
+
+.howitworks__page__wrapper {
+  padding-top: 9.6rem;
+}
+
+.howitworks__heading__wrapper {
+  margin: 2.4rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.howitworks__title {
+  margin-bottom: 3.6rem;
+}
+
+.howitworks__description {
+  @extend %text-18;
+}
+
+.howitworks__wrapper {
+  padding: unset;
+}

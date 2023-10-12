@@ -21,7 +21,7 @@ export default function Header({
   return (
     <div className='header'>
       <div className='header__wrapper' ref={wrapper}>
-        <Link href={'/'}>
+        <Link href={'/'} scroll={false}>
           <figure className='header__logo__wrapper'>
             <PrismicNextImage field={partials.logo} alt='' priority />
           </figure>
@@ -30,13 +30,15 @@ export default function Header({
           {data.navigation_links.map((element, index) => {
             return (
               <div className='header__link__wrapper' key={index}>
-                <div
+                <PrismicNextLink
+                  field={element.link}
                   className='header__link'
-                  id='anchor'
+                  id={element.anchor_div ? 'anchor' : undefined}
                   data-target={element.anchor_div}
+                  scroll={false}
                 >
                   {element.caption}
-                </div>
+                </PrismicNextLink>
               </div>
             )
           })}
