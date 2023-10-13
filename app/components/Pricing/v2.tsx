@@ -14,7 +14,7 @@ export default function Pricing_v2({
   index,
 }: {
   data: Content.PricingSlice
-  index: boolean
+  index?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()

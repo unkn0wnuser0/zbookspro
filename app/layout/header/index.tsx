@@ -4,10 +4,11 @@ import './styles.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import GSAP from 'gsap'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 export default function Header({
   data,
@@ -17,11 +18,40 @@ export default function Header({
   partials: Content.PartialsDocumentData
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  const [index, setIndex] = useState<boolean>(pathname == '/' ? true : false)
+
+  const getIndex = () => {
+    const index = document.querySelector('.index')
+
+    if (index) {
+      setIndex(true)
+    } else {
+      setIndex(false)
+    }
+  }
+
+  useEffect(() => {
+    const getIndex = document.querySelector('.index')
+    if (!getIndex) {
+      setIndex(false)
+    } else {
+      setIndex(true)
+    }
+  }, [pathname])
+
+  console.log(index)
 
   return (
     <div className='header'>
       <div className='header__wrapper' ref={wrapper}>
-        <Link href={'/'} scroll={false}>
+        <Link
+          href={'/'}
+          id={pathname === '/' ? 'anchor' : undefined}
+          // data-target={undefined}
+          scroll={false}
+        >
           <figure className='header__logo__wrapper'>
             <PrismicNextImage field={partials.logo} alt='' priority />
           </figure>

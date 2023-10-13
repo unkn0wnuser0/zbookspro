@@ -11,8 +11,10 @@ import { createObserver } from '../Observer'
 
 export default function CallToAction({
   data,
+  variation,
 }: {
   data: Content.CallToActionSlice
+  variation?: string
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -60,6 +62,7 @@ export default function CallToAction({
     <div className='cta'>
       <div
         className='cta__wrapper'
+        id={variation}
         ref={wrapper}
         style={{ visibility: 'hidden' }}
       >
@@ -70,7 +73,7 @@ export default function CallToAction({
           <PrismicNextImage field={data.primary.image} alt='' priority />{' '}
         </figure>
         <div className='cta__content__wrapper'>
-          {data.primary.title[0]?.type && (
+          {data.primary.title[0]?.spans.length > 0 && (
             <div
               className='cta__content__title'
               style={{ visibility: 'hidden' }}

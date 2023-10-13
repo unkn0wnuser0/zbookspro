@@ -55,7 +55,7 @@ export default function InterpolationScroll({ children }: Children) {
     wrapperWidth: 0,
   })
 
-  const [anchors, setAnchors] = useState<NodeListOf<Element>>([])
+  const [anchors, setAnchors] = useState<NodeListOf<Element>>()
 
   const handleSize = () => {
     setWindowSize({
@@ -148,30 +148,37 @@ export default function InterpolationScroll({ children }: Children) {
     }
   }, [pathname])
 
-  const scrollToAnchor = (element: Element) => {
+  const scrollToAnchor = (element: Element, event: Event) => {
     const targetDivName = element.getAttribute('data-target')!
-    const targetDiv = document.getElementById(targetDivName)!
-    const targetY = targetDiv.getBoundingClientRect().top
-    const delta = targetY + scroll.current
 
-    scroll.target = targetY
-    scroll.current = scroll.target
+    if (!targetDivName) {
+      event.preventDefault()
+      scroll.target = 0
+      scroll.current = 0
+    } else {
+      const targetDiv = document.getElementById(targetDivName)!
+      const targetY = targetDiv.getBoundingClientRect().top
+      const delta = targetY + scroll.current
+
+      scroll.target = targetY
+      scroll.current = scroll.target
+    }
 
     // scroll.target += delta - scroll.current
     // scroll.current = scroll.target
   }
 
   useEffect(() => {
-    anchors.forEach((element) => {
-      element.addEventListener('click', () => {
-        scrollToAnchor(element)
+    anchors!.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        scrollToAnchor(element, event)
       })
     })
 
     return () => {
-      anchors.forEach((element) => {
-        element.addEventListener('click', () => {
-          scrollToAnchor(element)
+      anchors!.forEach((element) => {
+        element.addEventListener('click', (event) => {
+          scrollToAnchor(element, event)
         })
       })
     }

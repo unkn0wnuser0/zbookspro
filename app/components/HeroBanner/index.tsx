@@ -45,7 +45,6 @@ export default function HeroBanner({
     //   rootMargin: '-15% 0% -15% 0%',
     //   freeze: true,
     // })
-    console.log(timeline)
   }, [])
 
   return (

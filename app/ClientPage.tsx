@@ -84,13 +84,13 @@ export default function ClientHome({
           {/* <TextBlock data={data.textBlock} /> */}
           <ProsList data={data.prosBlock} />
           {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
-          <HowItWorks data={data.howItWorksBlock} />
+          {/* <HowItWorks data={data.howItWorksBlock} /> */}
           <CallToAction data={data.callToAction[0]} />
           <Pricing_v2 index data={data.pricingBlock} />
           <ProsIcons data={data.prosIconsBlock} />
           <Logos data={data.logos} />
           {/* <Experience data={data.experienceBlock} /> */}
-          <CallToAction data={data.callToAction[1]} />
+          <CallToAction data={data.callToAction[1]} variation={'v2'} />
           <ContactForm data={data.contactForm} />
         </div>
       </div>
