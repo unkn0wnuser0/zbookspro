@@ -168,21 +168,21 @@ export default function InterpolationScroll({ children }: Children) {
     // scroll.current = scroll.target
   }
 
-  useEffect(() => {
-    anchors!.forEach((element) => {
-      element.addEventListener('click', (event) => {
-        scrollToAnchor(element, event)
-      })
-    })
+  // useEffect(() => {
+  //   anchors!.forEach((element) => {
+  //     element.addEventListener('click', (event) => {
+  //       scrollToAnchor(element, event)
+  //     })
+  //   })
 
-    return () => {
-      anchors!.forEach((element) => {
-        element.addEventListener('click', (event) => {
-          scrollToAnchor(element, event)
-        })
-      })
-    }
-  }, [anchors])
+  //   return () => {
+  //     anchors!.forEach((element) => {
+  //       element.addEventListener('click', (event) => {
+  //         scrollToAnchor(element, event)
+  //       })
+  //     })
+  //   }
+  // }, [anchors])
 
   useEffect(() => {
     const setWrapperHeight = () => {
