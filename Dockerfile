@@ -2,7 +2,7 @@ FROM node:16-slim as base
 
 WORKDIR /usr/src/app
 
-EXPOSE 9999
+EXPOSE 3000
 
 COPY . .
 
