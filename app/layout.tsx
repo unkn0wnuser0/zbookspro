@@ -9,7 +9,7 @@ import Cursor from './layout/cursor/cursor'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'zBookPro',
+  title: 'ZBookPro',
   description: 'Professional Bookkeeping Services',
 }
 
