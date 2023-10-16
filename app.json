@@ -2,7 +2,7 @@
   "name": "zbookpro",
   "options": {
     "allow-unauthenticated": true,
-    "memory": "256Mi",
+    "memory": "1024Mi",
     "cpu": "1",
     "port": 3000,
     "http2": false
