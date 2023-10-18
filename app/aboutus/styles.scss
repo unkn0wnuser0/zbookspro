@@ -5,22 +5,36 @@
 }
 
 .aboutus__wrapper {
-  padding-top: 9.6rem;
+  // padding-top: 9.6rem;
 }
 
-.aboutus__heading__wrapper {
+.aboutus__heading__wrapper,
+.aboutus__team__heading__wrapper {
   margin: 2.4rem auto;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.aboutus__title {
+.aboutus__team__heading__wrapper {
+  margin-top: 6.4rem;
+}
+
+.aboutus__heading__wrapper {
+  padding-top: 9.6rem;
+  padding-bottom: 6.4rem;
+  background-color: $color-gray;
+}
+
+.aboutus__title,
+.aboutus__team__title {
   margin-bottom: 3.6rem;
   @extend %title-52;
 }
 
-.aboutus__description {
+.aboutus__description,
+.aboutus__team__description {
   @extend %text-18;
   width: 60%;
   margin: auto;

@@ -29,6 +29,15 @@ export default function ClientAboutUs({
               <PrismicRichText field={prismicData.description} />
             </div>
           </div>
+
+          <div className='aboutus__team__heading__wrapper'>
+            <div className='aboutus__team__title'>
+              <PrismicRichText field={prismicData.team_title} />
+            </div>
+            <div className='aboutus__team__description'>
+              <PrismicRichText field={prismicData.team_description} />
+            </div>
+          </div>
           <div className='aboutus__team__wrapper'>
             {prismicData.team.map((element, index) => {
               return (

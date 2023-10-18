@@ -78,6 +78,28 @@ interface AboutUsDocumentData {
   description: prismic.RichTextField;
 
   /**
+   * Team Title field in *About Us*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.team_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  team_title: prismic.RichTextField;
+
+  /**
+   * Team Description field in *About Us*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.team_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  team_description: prismic.RichTextField;
+
+  /**
    * Team field in *About Us*
    *
    * - **Field Type**: Group
