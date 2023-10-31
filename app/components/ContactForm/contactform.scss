@@ -69,7 +69,47 @@
     border: 1px solid $color-darkgray;
     border-radius: 1.6rem;
     padding: 0 2.4rem;
+
+    &.error {
+      border-color: $color-red;
+    }
   }
+}
+
+.success__modal__wrapper {
+  visibility: hidden;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .success__modal {
+    position: absolute;
+    z-index: 1;
+    width: 50rem;
+    // height: 40rem;
+    background-color: $color-white;
+    border-radius: 1.6rem;
+    text-align: center;
+    padding: 3.6rem;
+  }
+
+  .success__modal__background {
+    width: 100%;
+    height: 100%;
+    background-color: $color-black;
+    opacity: 0.35;
+  }
+}
+
+.error__caption {
+  font-size: 1.6rem;
+  color: $color-red;
+  margin-bottom: 1.6rem;
 }
 
 .contactform__input__helper {
@@ -78,4 +118,23 @@
 
 .contactform__button {
   margin-top: 3.6rem;
+}
+
+.success__modal__image__wrapper {
+
+}
+
+.success__modal__title {
+  @extend %title-36;
+  margin-bottom: 2.4rem;
+}
+
+.success__modal__description {
+  @extend %text-18;
+  margin-bottom: 2.4rem;
+}
+
+.success__modal__button {
+  font-family: 'Inter';
+  font-size: 1.6rem;
 }

@@ -19,10 +19,12 @@ import InterpolationScroll from './components/InterpScroll'
 
 export default function ClientHome({
   data: prismicData,
+  modal,
   partials,
 }: {
   data: Content.IndexDocumentData
   partials: Content.PartialsDocumentData
+  modal: Content.ContactFormDocumentData
 }) {
   const data = {
     heroBanner: prismicData.slices.find((element) => {
@@ -91,7 +93,7 @@ export default function ClientHome({
           <Logos data={data.logos} />
           {/* <Experience data={data.experienceBlock} /> */}
           <CallToAction data={data.callToAction[1]} variation={'v2'} />
-          <ContactForm data={data.contactForm} />
+          <ContactForm data={data.contactForm} modal={modal} />
         </div>
       </div>
     </InterpolationScroll>

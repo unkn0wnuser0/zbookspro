@@ -171,6 +171,71 @@ export type AboutUsDocument<Lang extends string = string> =
   >;
 
 /**
+ * Content for Contact Form documents
+ */
+interface ContactFormDocumentData {
+  /**
+   * Image field in *Contact Form*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Contact Form*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *Contact Form*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button Caption field in *Contact Form*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.button_caption
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_caption: prismic.KeyTextField;
+}
+
+/**
+ * Contact Form document from Prismic
+ *
+ * - **API ID**: `contact_form`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactFormDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ContactFormDocumentData>,
+    "contact_form",
+    Lang
+  >;
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -658,6 +723,7 @@ export type PartialsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | AboutUsDocument
+  | ContactFormDocument
   | FooterDocument
   | HeaderDocument
   | HowItWorksDocument
@@ -1859,6 +1925,8 @@ declare module "@prismicio/client" {
       AboutUsDocumentData,
       AboutUsDocumentDataTeamItem,
       AboutUsDocumentDataSlicesSlice,
+      ContactFormDocument,
+      ContactFormDocumentData,
       FooterDocument,
       FooterDocumentData,
       HeaderDocument,
