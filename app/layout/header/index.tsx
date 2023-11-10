@@ -41,8 +41,6 @@ export default function Header({
     }
   }, [pathname])
 
-  console.log(index)
-
   return (
     <div className='header'>
       <div className='header__wrapper' ref={wrapper}>

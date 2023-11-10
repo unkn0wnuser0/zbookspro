@@ -1,6 +1,6 @@
 'use client'
 
-import React, { RefObject, use, useEffect, useRef, useState } from 'react'
+import React, { RefObject, useEffect, useRef, useState } from 'react'
 import { useEventListener, useIsomorphicLayoutEffect } from 'usehooks-ts'
 import GSAP from 'gsap'
 import { usePathname } from 'next/navigation'
@@ -55,7 +55,9 @@ export default function InterpolationScroll({ children }: Children) {
     wrapperWidth: 0,
   })
 
-  const [anchors, setAnchors] = useState<NodeListOf<Element>>()
+  const [loaded, setLoaded] = useState(false)
+
+  const [anchors, setAnchors] = useState<Element[]>([])
 
   const handleSize = () => {
     setWindowSize({
@@ -133,12 +135,30 @@ export default function InterpolationScroll({ children }: Children) {
   }
 
   useEffect(() => {
+    return () => {
+      anchors?.forEach((element) => {
+        element.removeEventListener('click', (event) => {
+          scrollToAnchor(element, event)
+        })
+      })
+    }
+  }, [])
+
+  useEffect(() => {
     frame.current = requestAnimationFrame(animate)
 
-    const anchorsDivs = document.querySelectorAll('#anchor')
+    const anchorsDivs = Array.from(document.querySelectorAll('#anchor'))
+
     setAnchors(anchorsDivs)
 
+    anchors.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        scrollToAnchor(element, event)
+      })
+    })
+
     return () => {
+      setAnchors([])
       cancelAnimationFrame(frame.current)
       document.body.style.height = '0px'
       scroll.current = 0
