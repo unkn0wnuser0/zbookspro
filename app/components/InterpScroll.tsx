@@ -34,7 +34,7 @@ const scroll = {
   limit: 0,
   current: 0,
   target: 0,
-  lerp: 0.025,
+  lerp: 0.075,
   paused: false,
   mTouch: false,
   mCurrentPosition: 0,
