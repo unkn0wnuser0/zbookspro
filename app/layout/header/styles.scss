@@ -16,6 +16,10 @@
   rgb(255, 255, 255) 0%,
   rgba(255, 255, 255, 0.85) 45%, 
   rgba(255, 255, 255, 0) 100%);
+
+  @include media('<duo') {
+    padding: 2.4rem 1.6rem;
+  }
 }
 
 .header__logo__wrapper {
@@ -30,10 +34,18 @@
   display: flex;
   align-items: center;
   gap: 3.6rem;
+
+  @include media('<duo') {
+    gap: 2.4rem;
+  }
 }
 
 .header__link__wrapper {
+  height: auto;
 
+  @include media('<duo') {
+    height: 2.4rem;
+  }
 }
 
 .header__link {
