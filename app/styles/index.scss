@@ -41,8 +41,6 @@ button {
     font-size: 2.4rem;
   }
 }
-
-
 .App {
   position: fixed;
   top: 0;
@@ -52,14 +50,17 @@ button {
   width: 100vw;
   overflow: hidden;
   z-index: 1;
-  font-family: $font-inter;
-  color: $color-black;
-  background-color: $color-white;
 }
 
 .app__wrapper {
   width: 100vw;
   height: fit-content;
+  position: fixed;
+  overflow: hidden;
+  z-index: 1;
+  font-family: $font-inter;
+  color: $color-black;
+  background-color: $color-white;
   // @extend %cover;
 }
 

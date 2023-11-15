@@ -1,9 +1,20 @@
 'use client'
 
-import React, { RefObject, useEffect, useRef, useState } from 'react'
-import { useEventListener, useIsomorphicLayoutEffect } from 'usehooks-ts'
+import React, {
+  RefObject,
+  Suspense,
+  use,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
+import { AnimatePresence, BoundingBox } from 'framer-motion'
+import { useIsomorphicLayoutEffect } from 'usehooks-ts'
 import GSAP from 'gsap'
-import { usePathname } from 'next/navigation'
+const NormalizeWheel = require('normalize-wheel')
+// import NormalizeWheel from 'normalize-wheel'
+import { useRouter, usePathname } from 'next/navigation'
+import _ from 'lodash'
 
 type Children = {
   children: string | JSX.Element | JSX.Element[] | React.ReactNode
@@ -22,19 +33,12 @@ interface Scroll {
   mDistance: number
 }
 
-interface WindowSize {
-  width: number
-  height: number
-  wrapperHeight: number
-  wrapperWidth: number
-}
-
 const scroll = {
   min: 0,
   limit: 0,
   current: 0,
   target: 0,
-  lerp: 0.1,
+  lerp: 0.175,
   paused: false,
   mTouch: false,
   mCurrentPosition: 0,
@@ -46,18 +50,17 @@ export default function InterpolationScroll({ children }: Children) {
   const wrapper = useRef<HTMLDivElement>(null)
   const frame = useRef(0)
   const scrollDisabled = useRef(false)
+  const router = useRouter()
   const pathname = usePathname()
+  const [listeners, setListeners] = useState(false)
+  const [scheduledFrame, setScheduledFrame] = useState(false)
 
-  const [windowSize, setWindowSize] = useState<WindowSize>({
+  const [windowSize, setWindowSize] = useState({
     width: 0,
     height: 0,
     wrapperHeight: 0,
     wrapperWidth: 0,
   })
-
-  const [loaded, setLoaded] = useState(false)
-
-  const [anchors, setAnchors] = useState<Element[]>([])
 
   const handleSize = () => {
     setWindowSize({
@@ -68,15 +71,19 @@ export default function InterpolationScroll({ children }: Children) {
     })
 
     if (window.innerWidth < 540) {
-      scroll.lerp = 0.1
+      scroll.lerp = 0.095
     }
   }
 
   const handleWheel = (e: WheelEvent) => {
-    scroll.target += e.deltaY
+    setScheduledFrame(true)
+
+    const { pixelY } = NormalizeWheel(e)
+    scroll.target += pixelY
   }
 
   const onTouchDown = (e: TouchEvent) => {
+    setScheduledFrame(true)
     scroll.mTouch = true
 
     scroll.mCurrentPosition = scroll.current
@@ -92,24 +99,31 @@ export default function InterpolationScroll({ children }: Children) {
 
     const y = e.touches[0].clientY
 
-    scroll.mDistance = (scroll.mStartPosition - y) * 2.5
+    scroll.mDistance = (scroll.mStartPosition - y) * 3.25
 
     scroll.target = scroll.mCurrentPosition + scroll.mDistance
   }
 
-  useEventListener('resize', handleSize)
-  useEventListener('wheel', handleWheel, wrapper)
-  useEventListener('touchstart', onTouchDown)
-  useEventListener('touchend', onTouchUp)
-  useEventListener('touchmove', onTouchMove)
+  useEffect(() => {
+    document.addEventListener('resize', handleSize, { passive: true })
+    wrapper.current!.addEventListener('wheel', handleWheel, { passive: true })
+    document.addEventListener('touchstart', onTouchDown, { passive: true })
+    document.addEventListener('touchend', onTouchUp, { passive: true })
+    document.addEventListener('touchmove', onTouchMove, { passive: true })
+
+    return () => {
+      document.removeEventListener('resize', handleSize)
+      document.removeEventListener('touchstart', onTouchDown)
+      document.removeEventListener('touchend', onTouchUp)
+      document.removeEventListener('touchmove', onTouchMove)
+    }
+  }, [])
 
   useIsomorphicLayoutEffect(() => {
     handleSize()
   }, [])
 
   const calculateScroll = () => {
-    // if (scrollDisabled.current) return
-
     scroll.target = GSAP.utils.clamp(0, scroll.limit, scroll.target)
 
     scroll.current = GSAP.utils.interpolate(
@@ -118,7 +132,7 @@ export default function InterpolationScroll({ children }: Children) {
       scroll.lerp
     )
 
-    if (scroll.current < 1) scroll.current = 0
+    if (scroll.current < 0.025) scroll.current = 0
   }
 
   const scrollY = (wrapper: RefObject<HTMLDivElement>) => {
@@ -129,95 +143,116 @@ export default function InterpolationScroll({ children }: Children) {
   }
 
   const animate = () => {
-    frame.current = requestAnimationFrame(animate)
-
     scrollY(wrapper)
+    frame.current = requestAnimationFrame(animate)
   }
 
   useEffect(() => {
-    return () => {
-      anchors?.forEach((element) => {
-        element.removeEventListener('click', (event) => {
-          scrollToAnchor(element, event)
-        })
-      })
-    }
-  }, [])
+    if (!scheduledFrame) return
 
-  useEffect(() => {
     frame.current = requestAnimationFrame(animate)
 
-    const anchorsDivs = Array.from(document.querySelectorAll('#anchor'))
-
-    setAnchors(anchorsDivs)
-
-    anchors.forEach((element) => {
-      element.addEventListener('click', (event) => {
-        scrollToAnchor(element, event)
-      })
-    })
-
     return () => {
-      setAnchors([])
       cancelAnimationFrame(frame.current)
       document.body.style.height = '0px'
       scroll.current = 0
       scroll.target = 0
-      scroll.limit = 0
-      scroll.min = 0
     }
-  }, [pathname])
+  }, [scheduledFrame])
 
-  const scrollToAnchor = (element: Element, event: Event) => {
+  useEffect(() => {
+    scroll.current = 0
+    scroll.target = 0
+  }, [router])
+
+  const scrollTo = (element: Element) => {
     const targetDivName = element.getAttribute('data-target')!
+    const headerHeight = document
+      .querySelector('.header')!
+      .getBoundingClientRect().height
 
-    if (!targetDivName) {
-      event.preventDefault()
-      scroll.target = 0
-      scroll.current = 0
-    } else {
-      const targetDiv = document.getElementById(targetDivName)!
-      const targetY = targetDiv.getBoundingClientRect().top
-      const delta = targetY + scroll.current
+    const offset = headerHeight * 2
+    const targetDiv = document.getElementById(targetDivName)!
+    const targetY = targetDiv.getBoundingClientRect().top
+    const delta = targetY + scroll.current
+    scroll.target = scroll.target
+    scroll.target = targetY + scroll.current - offset
+    scroll.current = scroll.target
+    console.log(offset)
+  }
 
-      scroll.target = targetY
-      scroll.current = scroll.target
-    }
+  const removeEventListeners = () => {
+    const anchors = document.querySelectorAll('#anchor')
+    const resetPrompts = document.querySelectorAll('#scroll-reset')
 
-    // scroll.target += delta - scroll.current
-    // scroll.current = scroll.target
+    anchors.forEach((element) => {
+      element.removeEventListener('click', () => {
+        scrollTo(element)
+      })
+    })
+
+    resetPrompts.forEach((element) => {
+      element.removeEventListener('click', () => {
+        scroll.current = 0
+        scroll.target = 0
+      })
+    })
+  }
+
+  const addEventListeners = () => {
+    removeEventListeners()
+    if (listeners) return
+
+    const anchors = document.querySelectorAll('#anchor')
+    console.log(anchors)
+
+    anchors.forEach((element) => {
+      element.addEventListener('click', () => {
+        setScheduledFrame(true)
+        scrollTo(element)
+      })
+    })
+
+    const resetPrompts = document.querySelectorAll('#scroll-reset')
+
+    resetPrompts.forEach((element) => {
+      element.addEventListener('click', () => {
+        scroll.current = 0
+        scroll.target = 0
+      })
+    })
+
+    setListeners(true)
   }
 
   // useEffect(() => {
-  //   anchors!.forEach((element) => {
-  //     element.addEventListener('click', (event) => {
-  //       scrollToAnchor(element, event)
-  //     })
-  //   })
+  //   removeEventListeners()
+  // }, [pathname])
 
-  //   return () => {
-  //     anchors!.forEach((element) => {
-  //       element.addEventListener('click', (event) => {
-  //         scrollToAnchor(element, event)
-  //       })
-  //     })
-  //   }
-  // }, [anchors])
+  useEffect(() => {
+    setTimeout(() => {
+      addEventListeners()
+    }, 250)
+  }, [listeners])
 
   useEffect(() => {
     const setWrapperHeight = () => {
       if (wrapper.current) {
-        document.body.style.height = `${
-          wrapper.current!.getBoundingClientRect().height
-        }px`
+        // document.body.style.height = `${
+        //   wrapper.current!.getBoundingClientRect().height
+        // }px`
       }
 
-      const resizeObserver = new ResizeObserver((entries) => {
-        for (let entry of entries) {
+      const detectHeight = _.throttle((entries) => {
+        entries.forEach((entry: ResizeObserverEntry) => {
           const cr = entry.contentRect
-          document.body.style.height = `${cr.height}px`
+          // document.body.style.height = `${cr.height}px`
           scroll.limit = cr.height - window.innerHeight
-        }
+        })
+      }, 250)
+
+      const resizeObserver = new ResizeObserver((entries) => {
+        detectHeight(entries)
       })
 
       resizeObserver.observe(wrapper.current!)
