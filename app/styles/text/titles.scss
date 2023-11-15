@@ -64,6 +64,17 @@
   }
 }
 
+%title-18 {
+  font-family: $font-inter;
+  font-size: 1.8rem;
+  line-height: 1.25;
+  font-weight: 500;
+
+  strong {
+    color: $color-red;
+  }
+}
+
 %link-16 {
   font-family: $font-inter;
   font-size: 1.6rem;

@@ -49,6 +49,51 @@ export interface AboutUsDocumentDataTeamItem {
   description: prismic.RichTextField;
 }
 
+/**
+ * Item in *About Us → Badges*
+ */
+export interface AboutUsDocumentDataBadgesItem {
+  /**
+   * Image field in *About Us → Badges*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Link field in *About Us → Badges*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+
+  /**
+   * Title field in *About Us → Badges*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *About Us → Badges*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges[].description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+}
+
 type AboutUsDocumentDataSlicesSlice = ContactFormSlice;
 
 /**
@@ -109,6 +154,28 @@ interface AboutUsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   team: prismic.GroupField<Simplify<AboutUsDocumentDataTeamItem>>;
+
+  /**
+   * Badges Title field in *About Us*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  badges_title: prismic.RichTextField;
+
+  /**
+   * Badges field in *About Us*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_us.badges[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  badges: prismic.GroupField<Simplify<AboutUsDocumentDataBadgesItem>>;
 
   /**
    * Slice Zone field in *About Us*
@@ -721,6 +788,40 @@ export type PartialsDocument<Lang extends string = string> =
     Lang
   >;
 
+type SharedComponentsDocumentDataSlicesSlice = TestimonialsSlice;
+
+/**
+ * Content for Shared Components documents
+ */
+interface SharedComponentsDocumentData {
+  /**
+   * Slice Zone field in *Shared Components*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: shared_components.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SharedComponentsDocumentDataSlicesSlice>;
+}
+
+/**
+ * Shared Components document from Prismic
+ *
+ * - **API ID**: `shared_components`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SharedComponentsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SharedComponentsDocumentData>,
+    "shared_components",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | AboutUsDocument
   | ContactFormDocument
@@ -729,7 +830,8 @@ export type AllDocumentTypes =
   | HowItWorksDocument
   | IndexDocument
   | OurServicesDocument
-  | PartialsDocument;
+  | PartialsDocument
+  | SharedComponentsDocument;
 
 /**
  * Primary content in *AlignedTextBlock → Primary*
@@ -1847,6 +1949,106 @@ export type ProsListBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Testimonials → Primary*
+ */
+export interface TestimonialsSliceDefaultPrimary {
+  /**
+   * Title field in *Testimonials → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Testimonials → Items*
+ */
+export interface TestimonialsSliceDefaultItem {
+  /**
+   * Photo field in *Testimonials → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.items[].photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+
+  /**
+   * Name field in *Testimonials → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.items[].name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  name: prismic.RichTextField;
+
+  /**
+   * Company Name field in *Testimonials → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.items[].company_name
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  company_name: prismic.RichTextField;
+
+  /**
+   * Company Link field in *Testimonials → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.items[].company_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  company_link: prismic.LinkField;
+
+  /**
+   * Text field in *Testimonials → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: testimonials.items[].text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Testimonials Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TestimonialsSliceDefaultPrimary>,
+  Simplify<TestimonialsSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *Testimonials*
+ */
+type TestimonialsSliceVariation = TestimonialsSliceDefault;
+
+/**
+ * Testimonials Shared Slice
+ *
+ * - **API ID**: `testimonials`
+ * - **Description**: Testimonials
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TestimonialsSlice = prismic.SharedSlice<
+  "testimonials",
+  TestimonialsSliceVariation
+>;
+
+/**
  * Primary content in *TextBlock → Primary*
  */
 export interface TextBlockSliceDefaultPrimary {
@@ -1924,6 +2126,7 @@ declare module "@prismicio/client" {
       AboutUsDocument,
       AboutUsDocumentData,
       AboutUsDocumentDataTeamItem,
+      AboutUsDocumentDataBadgesItem,
       AboutUsDocumentDataSlicesSlice,
       ContactFormDocument,
       ContactFormDocumentData,
@@ -1945,6 +2148,9 @@ declare module "@prismicio/client" {
       PartialsDocument,
       PartialsDocumentData,
       PartialsDocumentDataSocialsItem,
+      SharedComponentsDocument,
+      SharedComponentsDocumentData,
+      SharedComponentsDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlignedTextBlockSlice,
       AlignedTextBlockSliceDefaultPrimary,
@@ -1999,6 +2205,11 @@ declare module "@prismicio/client" {
       ProsListBlockSliceDefaultItem,
       ProsListBlockSliceVariation,
       ProsListBlockSliceDefault,
+      TestimonialsSlice,
+      TestimonialsSliceDefaultPrimary,
+      TestimonialsSliceDefaultItem,
+      TestimonialsSliceVariation,
+      TestimonialsSliceDefault,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceVariation,

@@ -1,0 +1,76 @@
+@import '../../styles/index.scss';
+
+.testimonials {
+
+}
+
+.testimonials__wrapper {
+  padding: 9.6rem 6.4rem;
+  background-color: $color-gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include media('<duo') {
+    padding: 0 2.4rem;
+    padding-top: 9.6rem;
+    padding-bottom: 4.8rem;
+  }
+}
+
+.testimonials__title {
+  @extend %title-52;
+  margin-bottom: 3.6rem;
+}
+
+.testimonials__cards {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+
+  @include media('<duo') {
+    flex-direction: column;
+  }
+}
+
+.testimonials__testimonial__wrapper {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.2rem 6.4rem;
+
+  @include media('<duo') {
+    width: 100%;
+    padding: 3.2rem 2.4rem;
+  }
+}
+
+.testimonials__testimonial__photo__wrapper {
+  width: 16rem;
+  height: 16rem;
+  margin-bottom: 2.4rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.testimonials__testimonial__name {
+  @extend %title-24;
+  margin-bottom: 1.2rem;
+}
+
+.testimonials__testimonial__company {
+  @extend %title-18;
+}
+
+.testimonials__testimonial__text {
+  margin-top: 1.6rem;
+  @extend %text-14;
+}

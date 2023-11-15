@@ -1,0 +1,22 @@
+{
+  "id": "shared_components",
+  "label": "Shared Components",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "testimonials": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

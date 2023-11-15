@@ -16,15 +16,18 @@ import Pricing_v2 from './components/Pricing/v2'
 import CallToAction from './components/CallToAction'
 import Logos from './components/Logos'
 import InterpolationScroll from './components/InterpScroll'
+import Testimonials from './components/Testimonials'
 
 export default function ClientHome({
   data: prismicData,
   modal,
   partials,
+  shared,
 }: {
   data: Content.IndexDocumentData
   partials: Content.PartialsDocumentData
   modal: Content.ContactFormDocumentData
+  shared: Content.SharedComponentsDocumentData
 }) {
   const data = {
     heroBanner: prismicData.slices.find((element) => {
@@ -91,6 +94,7 @@ export default function ClientHome({
           <Pricing_v2 index data={data.pricingBlock} />
           <ProsIcons data={data.prosIconsBlock} />
           <Logos data={data.logos} />
+          <Testimonials data={shared.slices} />
           {/* <Experience data={data.experienceBlock} /> */}
           <CallToAction data={data.callToAction[1]} variation={'v2'} />
           <ContactForm data={data.contactForm} modal={modal} />

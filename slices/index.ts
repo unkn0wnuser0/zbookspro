@@ -14,5 +14,6 @@ export const components = {
   pricing: dynamic(() => import("./Pricing")),
   pros_icons_block: dynamic(() => import("./ProsIconsBlock")),
   pros_list_block: dynamic(() => import("./ProsListBlock")),
+  testimonials: dynamic(() => import("./Testimonials")),
   text_block: dynamic(() => import("./TextBlock")),
 };

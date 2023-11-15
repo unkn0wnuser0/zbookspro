@@ -3,7 +3,7 @@
 import { Content } from '@prismicio/client'
 import InterpolationScroll from '../components/InterpScroll'
 import { PrismicRichText } from '@prismicio/react'
-import { PrismicNextImage } from '@prismicio/next'
+import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import ContactForm from '../components/ContactForm'
 
 export default function ClientAboutUs({
@@ -59,6 +59,24 @@ export default function ClientAboutUs({
                 </div>
               )
             })}
+          </div>
+          <div className='aboutus__badges__wrapper'>
+            <div className='aboutus__badges__title'>
+              <PrismicRichText field={prismicData.badges_title} />
+            </div>
+            <div className='aboutus__badges'>
+              {prismicData.badges.map((element, index) => {
+                return (
+                  <PrismicNextLink field={element.link}>
+                    <div className='aboutus__badge__wrapper' key={index}>
+                      <figure className='aboutus__badge__image__wrapper'>
+                        <PrismicNextImage field={element.image} alt='' />
+                      </figure>
+                    </div>
+                  </PrismicNextLink>
+                )
+              })}
+            </div>
           </div>
           <ContactForm data={data.contactForm} modal={modal} />
         </div>

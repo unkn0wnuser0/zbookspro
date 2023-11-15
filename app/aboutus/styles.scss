@@ -109,3 +109,41 @@
 .aboutus__team__member__description {
   @extend %text-14;
 }
+
+.aboutus__badges__wrapper {
+  padding: 9.6rem 0;
+  width: 100%;
+  background-color: $color-gray;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.aboutus__badges__title {
+  @extend %title-52;
+}
+
+.aboutus__badges {
+  display: flex;
+  flex-direction: row;
+  gap: 3.2rem;
+  margin-top: 4.8rem;
+}
+
+.aboutus__badge__wrapper {
+
+}
+
+.aboutus__badge__image__wrapper {
+  width: 16rem;
+  height: 16rem;
+  mix-blend-mode: multiply;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
