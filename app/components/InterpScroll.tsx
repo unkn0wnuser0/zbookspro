@@ -38,7 +38,7 @@ const scroll = {
   limit: 0,
   current: 0,
   target: 0,
-  lerp: 0.175,
+  lerp: 0.2,
   paused: false,
   mTouch: false,
   mCurrentPosition: 0,
@@ -71,7 +71,7 @@ export default function InterpolationScroll({ children }: Children) {
     })
 
     if (window.innerWidth < 540) {
-      scroll.lerp = 0.095
+      scroll.lerp = 0.1
     }
   }
 
@@ -99,7 +99,7 @@ export default function InterpolationScroll({ children }: Children) {
 
     const y = e.touches[0].clientY
 
-    scroll.mDistance = (scroll.mStartPosition - y) * 3.25
+    scroll.mDistance = (scroll.mStartPosition - y) * 3
 
     scroll.target = scroll.mCurrentPosition + scroll.mDistance
   }
