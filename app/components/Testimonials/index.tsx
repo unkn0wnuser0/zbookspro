@@ -1,6 +1,6 @@
 'use client'
 
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
+// import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import './testimonials.scss'
 
 import { Content } from '@prismicio/client'
