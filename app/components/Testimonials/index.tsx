@@ -1,5 +1,6 @@
 'use client'
 
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import './testimonials.scss'
 
 import { Content } from '@prismicio/client'
@@ -8,6 +9,7 @@ import { useEffect, useRef } from 'react'
 import { createObserver } from '../Observer'
 import GSAP from 'gsap'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
+import { Carousel } from 'react-responsive-carousel'
 
 export default function Testimonials({
   data,
@@ -22,7 +24,17 @@ export default function Testimonials({
         <div className='testimonials__title'>
           <PrismicRichText field={data[0].primary.title} />
         </div>
-        <div className='testimonials__cards'>
+        {/* <div className='testimonials__cards'> */}
+        <Carousel
+          axis='horizontal'
+          showArrows={true}
+          showThumbs={false}
+          autoPlay={true}
+          emulateTouch
+          interval={3000}
+          infiniteLoop
+          swipeable
+        >
           {data[0].items.map((element, index) => {
             return (
               <div className='testimonials__testimonial__wrapper' key={index}>
@@ -44,7 +56,8 @@ export default function Testimonials({
               </div>
             )
           })}
-        </div>
+        </Carousel>
+        {/* </div> */}
       </div>
     </div>
   )
