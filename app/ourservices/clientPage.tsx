@@ -24,35 +24,35 @@ export default function ClientOurServices({
   }
 
   return (
-    <InterpolationScroll>
-      <div className='ourservices'>
-        <div className='ourservices__wrapper'>
-          <div className='ourservices__heading__wrapper'>
-            <div className='ourservices__title'>
-              <PrismicRichText field={prismicData.title} />
-            </div>
-            <div className='ourservices__description'>
-              <PrismicRichText field={prismicData.description} />
-            </div>
+    // <InterpolationScroll>
+    <div className='ourservices'>
+      <div className='ourservices__wrapper'>
+        <div className='ourservices__heading__wrapper'>
+          <div className='ourservices__title'>
+            <PrismicRichText field={prismicData.title} />
           </div>
-          <div className='oursevices__services__wrapper'>
-            {prismicData.services.map((element, index) => {
-              return (
-                <div className='oursevices__service__wrapper' key={index}>
-                  <figure className='oursevices__service__icon__wrapper'>
-                    <PrismicNextImage field={element.icon} alt='' priority />
-                  </figure>
-                  <div className='oursevices__service__name'>
-                    <PrismicRichText field={element.name} />
-                  </div>
-                </div>
-              )
-            })}
+          <div className='ourservices__description'>
+            <PrismicRichText field={prismicData.description} />
           </div>
-          <Pricing_v2 data={data.pricing} />
-          <ContactForm data={data.contactForm} modal={modal} />
         </div>
+        <div className='oursevices__services__wrapper'>
+          {prismicData.services.map((element, index) => {
+            return (
+              <div className='oursevices__service__wrapper' key={index}>
+                <figure className='oursevices__service__icon__wrapper'>
+                  <PrismicNextImage field={element.icon} alt='' priority />
+                </figure>
+                <div className='oursevices__service__name'>
+                  <PrismicRichText field={element.name} />
+                </div>
+              </div>
+            )
+          })}
+        </div>
+        <Pricing_v2 data={data.pricing} />
+        <ContactForm data={data.contactForm} modal={modal} />
       </div>
-    </InterpolationScroll>
+    </div>
+    // </InterpolationScroll>
   )
 }

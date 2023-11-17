@@ -38,7 +38,7 @@ const scroll = {
   limit: 0,
   current: 0,
   target: 0,
-  lerp: 0.2,
+  lerp: 0.025,
   paused: false,
   mTouch: false,
   mCurrentPosition: 0,
@@ -71,7 +71,7 @@ export default function InterpolationScroll({ children }: Children) {
     })
 
     if (window.innerWidth < 540) {
-      scroll.lerp = 0.1
+      scroll.lerp = 0.075
     }
   }
 

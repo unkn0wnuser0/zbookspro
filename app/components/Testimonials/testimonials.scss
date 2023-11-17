@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+  overflow: hidden;
 
   @include media('<duo') {
     padding: 0 2.4rem;

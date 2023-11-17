@@ -25,6 +25,7 @@ export default async function RootLayout({
 
   return (
     <html>
+      <head />
       <body>
         <Header data={header} partials={partials} />
         {/* <Cursor speed={0.0025} /> */}

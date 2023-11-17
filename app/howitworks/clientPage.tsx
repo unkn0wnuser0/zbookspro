@@ -23,21 +23,21 @@ export default function ClientHowItWorks({
   }
 
   return (
-    <InterpolationScroll>
-      <div className='howitworks'>
-        <div className='howitworks__page__wrapper'>
-          <div className='howitworks__heading__wrapper'>
-            <div className='howitworks__title'>
-              <PrismicRichText field={prismicData.title} />
-            </div>
-            <div className='howitworks__description'>
-              <PrismicRichText field={prismicData.description} />
-            </div>
+    // <InterpolationScroll>
+    <div className='howitworks'>
+      <div className='howitworks__page__wrapper'>
+        <div className='howitworks__heading__wrapper'>
+          <div className='howitworks__title'>
+            <PrismicRichText field={prismicData.title} />
           </div>
-          <HowItWorks data={data.howItWorks} />
-          <ContactForm data={data.contactForm} modal={modal} />
+          <div className='howitworks__description'>
+            <PrismicRichText field={prismicData.description} />
+          </div>
         </div>
+        <HowItWorks data={data.howItWorks} />
+        <ContactForm data={data.contactForm} modal={modal} />
       </div>
-    </InterpolationScroll>
+    </div>
+    // {/* </InterpolationScroll> */}
   )
 }

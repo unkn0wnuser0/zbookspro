@@ -81,25 +81,25 @@ export default function ClientHome({
   })
 
   return (
-    <InterpolationScroll>
-      <div className='index'>
-        <div className='index__wrapper'>
-          <HeroBanner data={data.heroBanner} />
-          <ProsIcons_v2 data={data.prosIconsBlock_v2} />
-          {/* <TextBlock data={data.textBlock} /> */}
-          <ProsList data={data.prosBlock} />
-          {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
-          {/* <HowItWorks data={data.howItWorksBlock} /> */}
-          <CallToAction data={data.callToAction[0]} />
-          <Pricing_v2 index data={data.pricingBlock} />
-          <ProsIcons data={data.prosIconsBlock} />
-          <Logos data={data.logos} />
-          <Testimonials data={shared.slices} />
-          {/* <Experience data={data.experienceBlock} /> */}
-          <CallToAction data={data.callToAction[1]} variation={'v2'} />
-          <ContactForm data={data.contactForm} modal={modal} />
-        </div>
+    // <InterpolationScroll>
+    <div className='index'>
+      <div className='index__wrapper'>
+        <HeroBanner data={data.heroBanner} />
+        <ProsIcons_v2 data={data.prosIconsBlock_v2} />
+        {/* <TextBlock data={data.textBlock} /> */}
+        <ProsList data={data.prosBlock} />
+        {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
+        {/* <HowItWorks data={data.howItWorksBlock} /> */}
+        <CallToAction data={data.callToAction[0]} />
+        <Pricing_v2 index data={data.pricingBlock} />
+        <ProsIcons data={data.prosIconsBlock} />
+        <Logos data={data.logos} />
+        <Testimonials data={shared.slices} />
+        {/* <Experience data={data.experienceBlock} /> */}
+        <CallToAction data={data.callToAction[1]} variation={'v2'} />
+        <ContactForm data={data.contactForm} modal={modal} />
       </div>
-    </InterpolationScroll>
+    </div>
+    // {/* </InterpolationScroll> */}
   )
 }

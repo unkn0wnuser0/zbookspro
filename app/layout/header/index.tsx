@@ -22,6 +22,20 @@ export default function Header({
 
   const [index, setIndex] = useState<boolean>(pathname == '/' ? true : false)
 
+  useEffect(() => {
+    const anchors = Array.from(wrapper.current?.querySelectorAll('#anchor')!)
+    anchors.forEach((element) => {
+      element.addEventListener('click', (event) => {
+        event.preventDefault()
+        const targetID = element.getAttribute('data-target')!
+        const target = document.querySelector(`#${targetID}`)
+        target?.scrollIntoView({
+          behavior: 'smooth',
+        })
+      })
+    })
+  }, [])
+
   const getIndex = () => {
     const index = document.querySelector('.index')
 
@@ -48,7 +62,7 @@ export default function Header({
           href={'/'}
           id={pathname === '/' ? 'anchor' : undefined}
           // data-target={undefined}
-          scroll={false}
+          scroll={true}
         >
           <figure className='header__logo__wrapper'>
             <PrismicNextImage field={partials.logo} alt='' priority />
@@ -63,7 +77,7 @@ export default function Header({
                   className='header__link'
                   id={element.anchor_div ? 'anchor' : undefined}
                   data-target={element.anchor_div}
-                  scroll={false}
+                  scroll={true}
                 >
                   {element.caption}
                 </PrismicNextLink>
