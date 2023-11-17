@@ -41,6 +41,7 @@ button {
   color: $color-white;
   font-weight: 800;
   border-radius: 1.6rem;
+  font-family: 'Inter';
 
   @include media('<tablet-v') {
     padding: 2.4rem 6.4rem;

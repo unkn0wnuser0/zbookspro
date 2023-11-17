@@ -108,3 +108,12 @@
   transform: translateY(-50%);
 }
 
+.dot {
+  background:  $color-gray;
+  background-color: $color-black !important;
+
+  &.selected {
+    background: $color-red !important;
+  }
+}
+

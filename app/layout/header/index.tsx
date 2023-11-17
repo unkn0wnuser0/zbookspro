@@ -60,9 +60,9 @@ export default function Header({
       <div className='header__wrapper' ref={wrapper}>
         <Link
           href={'/'}
-          id={pathname === '/' ? 'anchor' : undefined}
+          // id={pathname === '/' ? 'anchor' : undefined}
           // data-target={undefined}
-          scroll={true}
+          // scroll={true}
         >
           <figure className='header__logo__wrapper'>
             <PrismicNextImage field={partials.logo} alt='' priority />
