@@ -12,9 +12,11 @@ import GSAP from 'gsap'
 export default function Pricing_v2({
   data,
   index,
+  animated,
 }: {
   data: Content.PricingSlice
   index?: boolean
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -82,6 +84,7 @@ export default function Pricing_v2({
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -95,12 +98,15 @@ export default function Pricing_v2({
     <div className='pricing'>
       <div className='pricing__wrapper' id='pricing-anchor' ref={wrapper}>
         <div className='pricing__title__wrapper'>
-          <div className='pricing__title' style={{ visibility: 'hidden' }}>
+          <div
+            className='pricing__title'
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
+          >
             <PrismicRichText field={data.primary.title} />
           </div>
           <div
             className='pricing__description'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.description} />
           </div>
@@ -114,7 +120,7 @@ export default function Pricing_v2({
 
             <div
               className='pricing__package__wrapper v2'
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
             >
               <div className='pricing__package__title'>
                 {data.primary.start_package_name}
@@ -127,7 +133,7 @@ export default function Pricing_v2({
             </div>
             <div
               className='pricing__package__wrapper v2'
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
             >
               <div className='pricing__package__title'>
                 {data.primary.full_package_name}

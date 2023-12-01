@@ -12,9 +12,11 @@ import { createObserver } from '../Observer'
 export default function CallToAction({
   data,
   variation,
+  animated,
 }: {
   data: Content.CallToActionSlice
   variation?: string
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -49,6 +51,7 @@ export default function CallToAction({
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -64,11 +67,11 @@ export default function CallToAction({
         className='cta__wrapper'
         id={variation}
         ref={wrapper}
-        style={{ visibility: 'hidden' }}
+        style={{ visibility: animated ? 'hidden' : 'visible' }}
       >
         <figure
           className='cta__image__wrapper'
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
         >
           <PrismicNextImage field={data.primary.image} alt='' priority />{' '}
         </figure>
@@ -76,7 +79,7 @@ export default function CallToAction({
           {data.primary.title[0]?.spans.length > 0 && (
             <div
               className='cta__content__title'
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
             >
               <PrismicRichText field={data.primary.title} />
             </div>
@@ -84,12 +87,15 @@ export default function CallToAction({
 
           <div
             className='cta__content__paragraphs'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.paragraphs} />
           </div>
           {data.primary.button_caption && (
-            <button className='cta__button' style={{ visibility: 'hidden' }}>
+            <button
+              className='cta__button'
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
+            >
               {data.primary.button_caption}
             </button>
           )}

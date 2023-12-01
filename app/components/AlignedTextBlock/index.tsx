@@ -11,8 +11,10 @@ import GSAP from 'gsap'
 
 export default function AlignedTextBlock({
   data,
+  animated,
 }: {
   data: Content.AlignedTextBlockSlice
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -53,6 +55,7 @@ export default function AlignedTextBlock({
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -68,7 +71,7 @@ export default function AlignedTextBlock({
         <div className='textblock__aligned__content__wrapper'>
           <div
             className='textblock__aligned__title'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.title} />
           </div>
@@ -77,7 +80,9 @@ export default function AlignedTextBlock({
               field={data.primary.paragraphs}
               components={{
                 paragraph: ({ children }) => (
-                  <p style={{ visibility: 'hidden' }}>{children}</p>
+                  <p style={{ visibility: animated ? 'hidden' : 'visible' }}>
+                    {children}
+                  </p>
                 ),
               }}
             />
@@ -85,7 +90,7 @@ export default function AlignedTextBlock({
         </div>
         <figure
           className='textblock__aligned__image__wrapper'
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
         >
           <PrismicNextImage
             className='textblock__aligned__image'

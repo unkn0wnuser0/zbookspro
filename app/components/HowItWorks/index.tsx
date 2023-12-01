@@ -11,8 +11,10 @@ import GSAP from 'gsap'
 
 export default function HowItWorks({
   data,
+  animated,
 }: {
   data: Content.HowItWorksSlice
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
 
@@ -45,6 +47,8 @@ export default function HowItWorks({
         })
       }
 
+      if (!animated) return
+
       createObserver({
         element: element as HTMLDivElement,
         animationIn: animateIn,
@@ -67,7 +71,7 @@ export default function HowItWorks({
               <div className='howitworks__step__wrapper' key={index}>
                 <figure
                   className='howitworks__step__icon__wrapper'
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: animated ? 'hidden' : 'visible' }}
                 >
                   <PrismicNextImage
                     className='howitworks__step__icon'
@@ -79,13 +83,13 @@ export default function HowItWorks({
                 <div className='howitworks__step__content__wrapper'>
                   <div
                     className='howitworks__step__point'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicRichText field={element.point} />
                   </div>
                   <div
                     className='howitworks__step__description'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicRichText field={element.description} />
                   </div>

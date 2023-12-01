@@ -9,7 +9,13 @@ import { useEffect, useRef } from 'react'
 import { createObserver } from '../Observer'
 import GSAP from 'gsap'
 
-export default function Logos({ data }: { data: Content.LogosSlice }) {
+export default function Logos({
+  data,
+  animated,
+}: {
+  data: Content.LogosSlice
+  animated?: boolean
+}) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
 
@@ -28,6 +34,7 @@ export default function Logos({ data }: { data: Content.LogosSlice }) {
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -39,7 +46,10 @@ export default function Logos({ data }: { data: Content.LogosSlice }) {
   return (
     <div className='logos'>
       <div className='logos__wrapper' ref={wrapper} id='logos-anchor'>
-        <div className='logos__title' style={{ visibility: 'hidden' }}>
+        <div
+          className='logos__title'
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
+        >
           <PrismicRichText field={data.primary.title} />
         </div>
         <div className='logos__icons__wrapper'>
@@ -49,7 +59,10 @@ export default function Logos({ data }: { data: Content.LogosSlice }) {
                 className='logos__icon__card'
                 field={element.link}
                 key={index}
-                style={{ cursor: 'pointer', visibility: 'hidden' }}
+                style={{
+                  cursor: 'pointer',
+                  visibility: animated ? 'hidden' : 'visible',
+                }}
               >
                 <figure className='logos__icon__wrapper'>
                   <PrismicNextImage field={element.logo} alt='' priority />

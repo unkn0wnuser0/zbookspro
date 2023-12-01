@@ -11,8 +11,10 @@ import GSAP from 'gsap'
 
 export default function ProsIcons({
   data,
+  animated,
 }: {
   data: Content.ProsIconsBlockSlice
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -83,6 +85,7 @@ export default function ProsIcons({
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -96,12 +99,15 @@ export default function ProsIcons({
     <div className='prosicons'>
       <div className='prosicons__wrapper' ref={wrapper}>
         <div className='prosicons__title__wrapper'>
-          <div className='prosicons__title' style={{ visibility: 'hidden' }}>
+          <div
+            className='prosicons__title'
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
+          >
             <PrismicRichText field={data.primary.title} />
           </div>
           <div
             className='prosicons__description'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.description} />
           </div>
@@ -112,7 +118,7 @@ export default function ProsIcons({
               <div className='prosicons__point__wrapper' key={index}>
                 <figure
                   className='prosicons__point__icon__wrapper'
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: animated ? 'hidden' : 'visible' }}
                 >
                   <PrismicNextImage
                     className='prosicons__point__icon'
@@ -124,13 +130,13 @@ export default function ProsIcons({
                 <div className='prosicons__point__content__wrapper'>
                   <div
                     className='prosicons__point__title'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicRichText field={element.title} />
                   </div>
                   <div
                     className='prosicons__point__description'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicRichText field={element.description} />
                   </div>

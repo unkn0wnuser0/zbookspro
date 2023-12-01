@@ -11,8 +11,10 @@ import { createObserver } from '../Observer'
 
 export default function HeroBanner({
   data,
+  animated,
 }: {
   data: Content.HeroBannerSlice
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -38,6 +40,8 @@ export default function HeroBanner({
   }
 
   useEffect(() => {
+    if (!animated) return
+
     animateIn()
     // createObserver({
     //   element: wrapper.current,
@@ -51,25 +55,28 @@ export default function HeroBanner({
     <div className='herobanner' ref={wrapper}>
       <div className='herobanner__wrapper'>
         <div className='herobanner__content__wrapper'>
-          <div className='herobanner__title' style={{ visibility: 'hidden' }}>
+          <div
+            className='herobanner__title'
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
+          >
             <PrismicRichText field={data.primary.title} />
           </div>
           <div
             className='herobanner__paragraphs'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.paragraphs} />
           </div>
           <button
             className='herobanner__button'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             {data.primary.button_caption}
           </button>
         </div>
         <figure
           className='herobanner__image__wrapper'
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
         >
           <PrismicNextImage
             className='herobanner__image'

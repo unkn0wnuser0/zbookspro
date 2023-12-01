@@ -17,6 +17,7 @@ export default async function Home() {
       partials={partials}
       modal={modal}
       shared={shared}
+      animated={false}
     />
   )
 }

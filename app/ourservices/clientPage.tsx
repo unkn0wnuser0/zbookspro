@@ -10,9 +10,11 @@ import ContactForm from '../components/ContactForm'
 export default function ClientOurServices({
   data: prismicData,
   modal,
+  animated,
 }: {
   data: Content.OurServicesDocumentData
   modal: Content.ContactFormDocumentData
+  animated?: boolean
 }) {
   const data = {
     pricing: prismicData.slices.find((element) => {
@@ -49,8 +51,12 @@ export default function ClientOurServices({
             )
           })}
         </div>
-        <Pricing_v2 data={data.pricing} />
-        <ContactForm data={data.contactForm} modal={modal} />
+        <Pricing_v2 data={data.pricing} animated={animated} />
+        <ContactForm
+          data={data.contactForm}
+          modal={modal}
+          animated={animated}
+        />
       </div>
     </div>
     // </InterpolationScroll>

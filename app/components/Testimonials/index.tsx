@@ -13,8 +13,10 @@ import { Carousel } from 'react-responsive-carousel'
 
 export default function Testimonials({
   data,
+  animated,
 }: {
   data: Content.TestimonialsSlice[]
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
 

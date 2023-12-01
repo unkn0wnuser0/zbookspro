@@ -23,11 +23,13 @@ export default function ClientHome({
   modal,
   partials,
   shared,
+  animated,
 }: {
   data: Content.IndexDocumentData
   partials: Content.PartialsDocumentData
   modal: Content.ContactFormDocumentData
   shared: Content.SharedComponentsDocumentData
+  animated: boolean
 }) {
   const data = {
     heroBanner: prismicData.slices.find((element) => {
@@ -84,20 +86,28 @@ export default function ClientHome({
     // <InterpolationScroll>
     <div className='index'>
       <div className='index__wrapper'>
-        <HeroBanner data={data.heroBanner} />
-        <ProsIcons_v2 data={data.prosIconsBlock_v2} />
+        <HeroBanner data={data.heroBanner} animated={animated} />
+        <ProsIcons_v2 data={data.prosIconsBlock_v2} animated={animated} />
         {/* <TextBlock data={data.textBlock} /> */}
-        <ProsList data={data.prosBlock} />
+        <ProsList data={data.prosBlock} animated={animated} />
         {/* <AlignedTextBlock data={data.leftTextBlock} /> */}
         {/* <HowItWorks data={data.howItWorksBlock} /> */}
-        <CallToAction data={data.callToAction[0]} />
-        <Pricing_v2 index data={data.pricingBlock} />
-        <ProsIcons data={data.prosIconsBlock} />
-        <Logos data={data.logos} />
-        <Testimonials data={shared.slices} />
+        <CallToAction data={data.callToAction[0]} animated={animated} />
+        <Pricing_v2 index data={data.pricingBlock} animated={animated} />
+        <ProsIcons data={data.prosIconsBlock} animated={animated} />
+        <Logos data={data.logos} animated={animated} />
+        <Testimonials data={shared.slices} animated={animated} />
         {/* <Experience data={data.experienceBlock} /> */}
-        <CallToAction data={data.callToAction[1]} variation={'v2'} />
-        <ContactForm data={data.contactForm} modal={modal} />
+        <CallToAction
+          data={data.callToAction[1]}
+          variation={'v2'}
+          animated={animated}
+        />
+        <ContactForm
+          data={data.contactForm}
+          modal={modal}
+          animated={animated}
+        />
       </div>
     </div>
     // {/* </InterpolationScroll> */}

@@ -13,8 +13,10 @@ export const revalidate = 0
 
 export default function ProsList({
   data,
+  animated,
 }: {
   data: Content.ProsListBlockSlice
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const timeline = GSAP.timeline()
@@ -85,6 +87,7 @@ export default function ProsList({
   }
 
   useEffect(() => {
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -99,17 +102,20 @@ export default function ProsList({
       <div className='proslist__wrapper' ref={wrapper}>
         <figure
           className='proslist__image__wrapper'
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
         >
           <PrismicNextImage field={data.primary.image} alt='' priority />
         </figure>
         <div className='proslist__content__wrapper'>
-          <div className='proslist__title' style={{ visibility: 'hidden' }}>
+          <div
+            className='proslist__title'
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
+          >
             <PrismicRichText field={data.primary.title} />
           </div>
           <div
             className='proslist__paragraphs'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.paragraphs} />
           </div>
@@ -119,7 +125,7 @@ export default function ProsList({
                 <div className='proslist__list__point__wrapper' key={index}>
                   <figure
                     className='proslist__list__point__icon__wrapper'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicNextImage
                       field={element.point_icon}
@@ -129,7 +135,7 @@ export default function ProsList({
                   </figure>
                   <div
                     className='proslist__list__point__caption'
-                    style={{ visibility: 'hidden' }}
+                    style={{ visibility: animated ? 'hidden' : 'visible' }}
                   >
                     <PrismicRichText field={element.point_text} />
                   </div>

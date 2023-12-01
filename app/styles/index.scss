@@ -13,8 +13,14 @@
 @import './base/fonts';
 @import './base/base';
 
+* { /* Replacing "*" with ".my-element" would probably be better for the rest of your site*/
+  -webkit-text-size-adjust: none;
+  -webkit-font-size-adjust: none;
+}
+
 html{
   box-sizing: border-box;
+  font-size: 12px; 
   // cursor: none;
 }
 

@@ -13,9 +13,11 @@ import GSAP from 'gsap'
 export default function ContactForm({
   data,
   modal,
+  animated,
 }: {
   data: Content.ContactFormSlice
   modal: Content.ContactFormDocumentData
+  animated?: boolean
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
   const inputs = useRef<HTMLFormElement>(null)
@@ -189,6 +191,7 @@ export default function ContactForm({
   useEffect(() => {
     document.body.appendChild(successModal.current!)
 
+    if (!animated) return
     createObserver({
       element: wrapper.current,
       animationIn: animateIn,
@@ -220,7 +223,7 @@ export default function ContactForm({
       <div className='contactform__wrapper' ref={wrapper} id='form-anchor'>
         <figure
           className='contactform__image__wrapper'
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: animated ? 'hidden' : 'visible' }}
         >
           <PrismicNextImage
             className='contactform__image'
@@ -230,12 +233,15 @@ export default function ContactForm({
           />
         </figure>
         <div className='contactform__content__wrapper'>
-          <div className='contactform__title' style={{ visibility: 'hidden' }}>
+          <div
+            className='contactform__title'
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
+          >
             <PrismicRichText field={data.primary.title} />
           </div>
           <div
             className='contactform__description'
-            style={{ visibility: 'hidden' }}
+            style={{ visibility: animated ? 'hidden' : 'visible' }}
           >
             <PrismicRichText field={data.primary.description} />
           </div>
@@ -244,7 +250,7 @@ export default function ContactForm({
               className='contactform__input__helper'
               type='text'
               placeholder={data.primary.name_helper_text!}
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
               ref={username}
               required
             />
@@ -252,7 +258,7 @@ export default function ContactForm({
               className='contactform__input__helper'
               type='text'
               placeholder={data.primary.email_helper_text!}
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
               ref={email}
               required
             />
@@ -260,13 +266,13 @@ export default function ContactForm({
               className='contactform__input__helper'
               type='text'
               placeholder={data.primary.phone_helper_text!}
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
               ref={phone}
               required
             />
             <button
               className='contactform__button'
-              style={{ visibility: 'hidden' }}
+              style={{ visibility: animated ? 'hidden' : 'visible' }}
               onClick={sendEmail}
               type='submit'
               ref={button}

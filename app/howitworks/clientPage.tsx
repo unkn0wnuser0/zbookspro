@@ -9,9 +9,11 @@ import ContactForm from '../components/ContactForm'
 export default function ClientHowItWorks({
   data: prismicData,
   modal,
+  animated,
 }: {
   data: Content.HowItWorksDocumentData
   modal: Content.ContactFormDocumentData
+  animated?: boolean
 }) {
   const data = {
     howItWorks: prismicData.slices.find((element) => {
@@ -34,8 +36,12 @@ export default function ClientHowItWorks({
             <PrismicRichText field={prismicData.description} />
           </div>
         </div>
-        <HowItWorks data={data.howItWorks} />
-        <ContactForm data={data.contactForm} modal={modal} />
+        <HowItWorks data={data.howItWorks} animated={animated} />
+        <ContactForm
+          data={data.contactForm}
+          modal={modal}
+          animated={animated}
+        />
       </div>
     </div>
     // {/* </InterpolationScroll> */}
