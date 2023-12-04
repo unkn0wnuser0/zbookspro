@@ -30,11 +30,18 @@
 }
 
 .pricing {
-
+  max-width: 1440px;
+  margin: auto;
 }
 
 .pricing__wrapper {
   margin-bottom: 9.6rem;
+  margin: auto;
+
+  @include media('<duo') {
+    width: 90%;
+    padding-top: 4.8rem;
+  }
 }
 
 .pricing__title__wrapper {
@@ -42,6 +49,11 @@
   width: 70%;
   margin: auto;
   margin-bottom: 6.4rem;
+
+  @include media('<duo') {
+    width: 90%;
+    margin-bottom: 3.6rem;
+  }
 }
 
 .pricing__title {
@@ -74,7 +86,9 @@
     gap: 6.4rem;
 
     @include media('<duo') {
+      gap: 3.6rem;
       grid-template-columns: 1fr;
+      margin-bottom:unset;
     }
   }
 }
@@ -208,10 +222,17 @@
 
 }
 
-.pricing__button {
+.cta__button {
+
+  &.pricing {
+    @include media('<duo') {
+      width: 100%;
+      margin: auto;
+    }
+  }
   display: block;
   margin: 4.8rem auto 6.4rem;
-  width: 25%;
+  // width: 25%;
 
   @include media('<duo') {
     width: 75%;

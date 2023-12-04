@@ -1,16 +1,21 @@
 @import '../../styles/index.scss';
 
 .logos {
-
+  max-width: 1440px;
+  margin: auto;
 }
 
 .logos__wrapper {
   margin: 12.8rem 3.6rem;
+
+  @include media('<duo') {
+    margin: 9.6rem 1.6rem;
+    margin-bottom: 4.8rem;
+  }
 }
 
 .logos__title {
   @extend %title-48;
-  font-size: 4.2rem;
   text-align: center;
   margin-bottom: 3.6rem;
 }
@@ -23,6 +28,8 @@
   @include media('<duo') {
     flex-direction: row;
     flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
   }
 }
 
@@ -32,7 +39,7 @@
   padding: 1.2rem;
 
   @include media('<duo') {
-    min-width: 50%;
+    min-width: 350px;
   }
 }
 

@@ -26,11 +26,13 @@ export default function ClientAboutUs({
     <div className='aboutus'>
       <div className='aboutus__wrapper'>
         <div className='aboutus__heading__wrapper'>
-          <div className='aboutus__title'>
-            <PrismicRichText field={prismicData.title} />
-          </div>
-          <div className='aboutus__description'>
-            <PrismicRichText field={prismicData.description} />
+          <div className='aboutus__heading'>
+            <div className='aboutus__title'>
+              <PrismicRichText field={prismicData.title} />
+            </div>
+            <div className='aboutus__description'>
+              <PrismicRichText field={prismicData.description} />
+            </div>
           </div>
         </div>
 

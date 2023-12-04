@@ -1,7 +1,8 @@
 @import '../../styles/index.scss';
 
 .herobanner{
-
+  max-width: 1440px;
+  margin: auto;
 }
 
 .herobanner__wrapper{
@@ -9,17 +10,21 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 100vh;
+  // height: 90rem;
+  // height: 90vh;
 
   @include media('<tablet-v') {
+    // height: 60rem;
     padding: 9.6rem 0;
+
     text-align: center;
     flex-direction: column-reverse;
   }
 
   @include media('<duo') {
     justify-content: center;
-    padding:unset;
+    padding-bottom: 3.6rem;
+    // padding:unset;
   }
 }
 
@@ -29,17 +34,26 @@
 
   @include media('<tablet-v') {
     width: unset;
+    padding: 0 1.6rem;
   }
 }
 
 .herobanner__title{
   @extend %title-48;
   margin-bottom: 3.6rem;
+
+  @include media('<duo') {
+    margin-bottom: 2.4rem;
+  }
 }
 
 .herobanner__paragraphs{
   @extend %text-18;
   margin-bottom: 3.6rem;
+
+  @include media('<duo') {
+    margin-bottom: 2.4rem;
+  }
 }
 
 .herobanner__image__wrapper{

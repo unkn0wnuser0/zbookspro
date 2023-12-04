@@ -22,19 +22,29 @@
 }
 
 .aboutus__heading__wrapper {
+
+  margin: auto;
+  background-color: $color-gray;
+}
+
+.aboutus__heading {
+  max-width: 1440px;
+  text-align: center;
+  margin: auto;
   padding-top: 9.6rem;
   padding-bottom: 6.4rem;
-  background-color: $color-gray;
 }
 
 .aboutus__title,
 .aboutus__team__title {
+  max-width: 1440px;
   margin-bottom: 3.6rem;
   @extend %title-52;
 }
 
 .aboutus__description,
 .aboutus__team__description {
+  max-width: 1440px;
   @extend %text-18;
   width: 60%;
   margin: auto;
@@ -42,6 +52,8 @@
 }
 
 .aboutus__team__wrapper {
+  max-width: 1440px;
+  margin: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

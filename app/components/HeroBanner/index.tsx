@@ -70,6 +70,12 @@ export default function HeroBanner({
           <button
             className='herobanner__button'
             style={{ visibility: animated ? 'hidden' : 'visible' }}
+            onClick={() => {
+              const target = document.querySelector('.contactform')
+              target?.scrollIntoView({
+                behavior: 'smooth',
+              })
+            }}
           >
             {data.primary.button_caption}
           </button>

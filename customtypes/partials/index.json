@@ -60,6 +60,22 @@
           "constraint": {},
           "thumbnails": []
         }
+      },
+      "menu_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Menu Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "close_icon": {
+        "type": "Image",
+        "config": {
+          "label": "Close Icon",
+          "constraint": {},
+          "thumbnails": []
+        }
       }
     }
   }

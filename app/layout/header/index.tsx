@@ -18,6 +18,7 @@ export default function Header({
   partials: Content.PartialsDocumentData
 }) {
   const wrapper = useRef<HTMLDivElement>(null)
+  const links = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
 
   const [index, setIndex] = useState<boolean>(pathname == '/' ? true : false)
@@ -35,6 +36,53 @@ export default function Header({
       })
     })
   }, [])
+
+  const openMenu = () => {
+    const open = document.querySelector('#open')
+    const close = document.querySelector('#close')
+    GSAP.to(open, {
+      autoAlpha: 0,
+      duration: 0.25,
+    })
+
+    GSAP.to(close, {
+      autoAlpha: 1,
+      duration: 0.25,
+    })
+
+    GSAP.to(wrapper.current, {
+      height: '100vh',
+      backgroundColor: 'rgba(255,255,255, 1)',
+    })
+
+    GSAP.to(links.current, {
+      autoAlpha: 1,
+    })
+  }
+
+  const closeMenu = () => {
+    if (window.innerWidth > 760) return
+    const open = document.querySelector('#open')
+    const close = document.querySelector('#close')
+    GSAP.to(open, {
+      autoAlpha: 1,
+      duration: 0.25,
+    })
+
+    GSAP.to(close, {
+      autoAlpha: 0,
+      duration: 0.25,
+    })
+
+    GSAP.to(wrapper.current, {
+      height: '0',
+      backgroundColor: 'rgba(255,255,255, 0)',
+    })
+
+    GSAP.to(links.current, {
+      autoAlpha: 0,
+    })
+  }
 
   const getIndex = () => {
     const index = document.querySelector('.index')
@@ -55,20 +103,38 @@ export default function Header({
     }
   }, [pathname])
 
-  return (
-    <div className='header'>
+  const renderDesktop = () => {
+    return (
       <div className='header__wrapper' ref={wrapper}>
-        <Link
-          href={'/'}
-          // id={pathname === '/' ? 'anchor' : undefined}
-          // data-target={undefined}
-          // scroll={true}
-        >
-          <figure className='header__logo__wrapper'>
-            <PrismicNextImage field={partials.logo} alt='' priority />
-          </figure>
-        </Link>
-        <div className='header__links__wrapper'>
+        <div className='header__heading__wrapper'>
+          <Link
+            href={'/'}
+            // id={pathname === '/' ? 'anchor' : undefined}
+            // data-target={undefined}
+            // scroll={true}
+          >
+            <figure className='header__logo__wrapper'>
+              <PrismicNextImage field={partials.logo} alt='' priority />
+            </figure>
+          </Link>
+          <div className='header__menu__wrapper'>
+            <PrismicNextImage
+              id='close'
+              field={partials.close_icon}
+              alt=''
+              onClick={closeMenu}
+            />
+
+            <PrismicNextImage
+              id='open'
+              field={partials.menu_icon}
+              alt=''
+              onClick={openMenu}
+            />
+          </div>
+        </div>
+
+        <div className='header__links__wrapper' ref={links}>
           {data.navigation_links.map((element, index) => {
             return (
               <div className='header__link__wrapper' key={index}>
@@ -78,6 +144,7 @@ export default function Header({
                   id={element.anchor_div ? 'anchor' : undefined}
                   data-target={element.anchor_div}
                   scroll={true}
+                  onClick={closeMenu}
                 >
                   {element.caption}
                 </PrismicNextLink>
@@ -86,6 +153,8 @@ export default function Header({
           })}
         </div>
       </div>
-    </div>
-  )
+    )
+  }
+
+  return <div className='header'>{renderDesktop()}</div>
 }

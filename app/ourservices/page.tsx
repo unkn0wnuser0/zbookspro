@@ -11,5 +11,5 @@ export default async function AboutUs() {
   const { data: index } = await client.getSingle('our_services')
   const { data: modal } = await client.getSingle('contact_form')
 
-  return <ClientOurServices data={index} modal={modal} />
+  return <ClientOurServices data={index} modal={modal} animated={false} />
 }

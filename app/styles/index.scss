@@ -16,11 +16,20 @@
 * { /* Replacing "*" with ".my-element" would probably be better for the rest of your site*/
   -webkit-text-size-adjust: none;
   -webkit-font-size-adjust: none;
+  box-sizing: border-box;
+  ::after {
+    box-sizing: border-box;
+  }
+
+  ::before {
+    box-sizing: border-box;
+  }
 }
 
 html{
-  box-sizing: border-box;
+
   font-size: 12px; 
+  font-size: 10px; 
   // cursor: none;
 }
 
@@ -30,11 +39,12 @@ figure {
 }
 
 body {
+  overflow-x: hidden;
   box-sizing: border-box;
   display: block;
   background-color: $color-white;
   color: $color-black;
-  width: 100vw;
+  // width: 100vw;
   overflow-x: hidden;
   font-family: 'Inter';
   // position: fixed;
@@ -51,8 +61,8 @@ button {
   font-family: 'Inter';
 
   @include media('<tablet-v') {
-    padding: 2.4rem 6.4rem;
-    font-size: 2.4rem;
+    padding: 1.6rem 4.8rem;
+    font-size: 1.4rem;
   }
 }
 .App {
@@ -60,14 +70,14 @@ button {
   top: 0;
   left: 0;
   height: 100%;
-  width: 100vw;
-  width: 100vw;
+  // width: 100vw;
+  // width: 100vw;
   overflow: hidden;
   z-index: 1;
 }
 
 .app__wrapper {
-  width: 100vw;
+  // width: 100vw;
   height: fit-content;
   position: fixed;
   overflow: hidden;

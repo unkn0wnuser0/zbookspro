@@ -3,6 +3,7 @@
 
 .header {
   z-index: 5;
+  font-size: 6px;
 }
 
 .header__wrapper {
@@ -12,13 +13,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: 'rgba(255,255,255, 0)';
   background: linear-gradient(to bottom, 
   rgb(255, 255, 255) 0%,
   rgba(255, 255, 255, 0.85) 45%, 
   rgba(255, 255, 255, 0) 100%);
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
+    display: unset;
+    flex-direction: column;
+    // background: unset;
+    // height: 100vh;
+    // background-color: #fff;
     padding: 2.4rem 1.6rem;
+  }
+}
+
+.header__heading__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__menu__wrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  border: 2px solid $color-red;
+  position: relative;
+
+  #close {
+    visibility: hidden;
+  }
+
+  img {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    margin: auto;
+  }
+
+  @include media('<tablet-v') {
+    display: flex;
   }
 }
 
@@ -26,7 +66,7 @@
   cursor: pointer;
 
   @include media('<duo') {
-    width: 4.8rem;
+    width: unset;
   }
 }
 
@@ -35,8 +75,12 @@
   align-items: center;
   gap: 3.6rem;
 
-  @include media('<duo') {
-    gap: 2.4rem;
+  @include media('<tablet-v') {
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3.6rem;
+    visibility: hidden;
   }
 }
 
@@ -55,4 +99,8 @@
   font-size: 1.4rem;
   font-weight: 600;
   cursor: pointer;
+
+  @include media('<duo') {
+    font-size: 1.4rem;
+  }
 }

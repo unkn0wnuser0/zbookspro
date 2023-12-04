@@ -770,6 +770,28 @@ interface PartialsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   unchecked_icon: prismic.ImageField<never>;
+
+  /**
+   * Menu Icon field in *Partials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partials.menu_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  menu_icon: prismic.ImageField<never>;
+
+  /**
+   * Close Icon field in *Partials*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partials.close_icon
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  close_icon: prismic.ImageField<never>;
 }
 
 /**
