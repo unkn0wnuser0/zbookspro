@@ -19,6 +19,7 @@ export default function ContactForm({
   modal: Content.ContactFormDocumentData
   animated?: boolean
 }) {
+  // const animated = true
   const wrapper = useRef<HTMLDivElement>(null)
   const inputs = useRef<HTMLFormElement>(null)
   const successModal = useRef<HTMLDivElement>(null)
@@ -33,6 +34,7 @@ export default function ContactForm({
 
   const sendEmail = (event: FormEvent) => {
     event.preventDefault()
+    button.current!.disabled = true
     const emptyCheck = [username.current!, email.current!, phone.current!]
 
     emptyCheck.forEach((element) => {
@@ -89,9 +91,12 @@ export default function ContactForm({
       phone.current!.classList.remove('error')
     }
 
-    if (errored) return
+    if (errored) {
+      return (button.current!.disabled = false)
+    }
 
     const apiEndpoint = '/api/email'
+    // showModal()
 
     fetch(apiEndpoint, {
       method: 'POST',
@@ -100,9 +105,11 @@ export default function ContactForm({
       .then((res) => res.json())
       .then((response) => {
         showModal()
+        button.current!.disabled = false
       })
       .catch((err) => {
         alert(err)
+        button.current!.disabled = false
       })
   }
 
@@ -276,6 +283,7 @@ export default function ContactForm({
               onClick={sendEmail}
               type='submit'
               ref={button}
+              // disabled
             >
               {data.primary.button_caption}
             </button>

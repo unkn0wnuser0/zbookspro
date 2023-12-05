@@ -86,10 +86,13 @@
 }
 
 .success__modal__wrapper {
+  width: 100%;
   visibility: hidden;
   position: fixed;
-  z-index: 5;
-  width: 100%;
+  z-index: 6;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -131,6 +134,9 @@
 
 .contactform__button {
   margin-top: 3.6rem;
+  &:disabled {
+    background-color: $color-darkgray;
+  }
 
   @include media('<duo') {
     margin-top: 2.4rem;
