@@ -75,7 +75,7 @@ export default function Header({
     })
 
     GSAP.to(wrapper.current, {
-      height: '0',
+      height: '9.6rem',
       backgroundColor: 'rgba(255,255,255, 0)',
     })
 

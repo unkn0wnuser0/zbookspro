@@ -1,0 +1,46 @@
+@import '../styles/index.scss';
+
+.textpage {
+  max-width: 1440px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.textpage__wrapper {
+  padding-top: 9.6rem;
+  padding: 9.6rem 6.4rem;
+
+  @include media('<duo') {
+    padding: 9.6rem 3.6rem;
+  }
+}
+
+.textpage__title {
+  margin-bottom: 3.6rem;
+  @extend %title-52;
+  
+  strong {
+    color: $color-black;
+  }
+}
+
+.textpage__text {
+  @extend %text-18;
+  margin: auto;
+
+  p {
+    margin-bottom: 2.8rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 2.8rem;
+  }
+
+  ul {
+    list-style: disc;
+    list-style-position: inside;
+    margin-bottom: 2.8rem;
+  }
+  // text-align: center;
+}

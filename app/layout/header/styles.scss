@@ -32,6 +32,10 @@
     // background-color: #fff;
     padding: 2.4rem 1.6rem;
   }
+
+  @include media('<duo') {
+    height: 9.6rem;
+  }
 }
 
 .header__heading__wrapper {
