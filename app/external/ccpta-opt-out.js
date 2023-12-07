@@ -1,4 +1,4 @@
-export var ccpa_optout = (function (t) {
+var ccpa_optout = (function (t) {
   var e = {}
   function o(n) {
     if (e[n]) return e[n].exports

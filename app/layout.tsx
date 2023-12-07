@@ -8,7 +8,8 @@ import Cursor from './layout/cursor/cursor'
 import Footer from './layout/footer'
 import { useEffect } from 'react'
 import Script from 'next/script'
-import { ccpa_optout } from './external/ccpta-opt-out'
+import Head from 'next/head'
+import { NextScript } from 'next/document'
 // import ccpa_optout from '//www.termsfeed.com/public/ccpa-opt-out/releases/1.0.0/ccpa-opt-out.js'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -38,14 +39,8 @@ export default async function RootLayout({
 
   return (
     <html>
-      <head />
+      <head></head>
       <body>
-        <noscript>
-          <a href='https://www.TermsFeed.com/ccpa-opt-out/' rel='noopener'>
-            TermsFeed
-          </a>
-        </noscript>
-
         <Header data={header} partials={partials} />
         {/* <Cursor speed={0.0025} /> */}
         {children}

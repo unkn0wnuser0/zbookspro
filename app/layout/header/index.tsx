@@ -4,12 +4,13 @@ import './styles.scss'
 
 import { Content } from '@prismicio/client'
 import { PrismicRichText } from '@prismicio/react'
-import { useEffect, useRef, useState } from 'react'
+import { Suspense, useEffect, useRef, useState } from 'react'
 import GSAP from 'gsap'
 import { PrismicNextImage, PrismicNextLink } from '@prismicio/next'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ccpa_optout } from '../../external/ccpta-opt-out'
+import { Helmet } from 'react-helmet'
+import Script from 'next/script'
 
 export default function Header({
   data,
@@ -35,21 +36,6 @@ export default function Header({
           behavior: 'smooth',
         })
       })
-    })
-
-    ccpa_optout.run({
-      banner_style: 'notice',
-      banner_color_palette: 'dark',
-      banner_title: 'Do Not Sell My Information',
-      banner_description:
-        'Turning this off will opt you out of personalized advertisements on this website.',
-      banner_category_label: 'Personalized Advertisements',
-      banner_confirmation_button: 'Save Preference',
-      banner_close_button: 'Close',
-      change_settings_selector: '#changePreferences',
-      loads_on_page_load_for_new_users: 'true',
-      banner_category_status_opted_out: 'Opted Out',
-      banner_category_status_not_opted_out: 'Not Opted Out',
     })
   }, [])
 
@@ -119,9 +105,41 @@ export default function Header({
     }
   }, [pathname])
 
+  // document.addEventListener('DOMContentLoaded', function () {
+  // ccpa_optout.run({"banner_style":"notice","banner_color_palette":"dark","banner_title":"Do Not Sell My Information","banner_description":"Turning this off will opt you out of personalized advertisements on this website.","banner_category_label":"Personalized Advertisements","banner_confirmation_button":"Save Preference","banner_close_button":"Close","change_settings_selector":"#changePreferences","loads_on_page_load_for_new_users":"true","banner_category_status_opted_out":"Opted Out","banner_category_status_not_opted_out":"Not Opted Out"});
+  // });
+  // </script>
+  // <noscript>CCPA Opt-Out by <a href="https://www.TermsFeed.com/ccpa-opt-out/" rel="noopener">TermsFeed</a></noscript>
+
   const renderDesktop = () => {
     return (
       <div className='header__wrapper' ref={wrapper}>
+        <Script
+          src='//www.termsfeed.com/public/ccpa-opt-out/releases/1.0.0/ccpa-opt-out.js'
+          onLoad={(e) => {
+            console.log(e)
+            return (
+              <Script>
+                document.addEventListener('DOMContentLoaded', function (){' '}
+                {ccpa_optout.run({
+                  banner_style: 'notice',
+                  banner_color_palette: 'dark',
+                  banner_title: 'Do Not Sell My Information',
+                  banner_description:
+                    'Turning this off will opt you out of personalized advertisements on this website.',
+                  banner_category_label: 'Personalized Advertisements',
+                  banner_confirmation_button: 'Save Preference',
+                  banner_close_button: 'Close',
+                  change_settings_selector: '#changePreferences',
+                  loads_on_page_load_for_new_users: 'true',
+                  banner_category_status_opted_out: 'Opted Out',
+                  banner_category_status_not_opted_out: 'Not Opted Out',
+                })}
+                )
+              </Script>
+            )
+          }}
+        ></Script>
         <div className='header__heading__wrapper'>
           <Link
             href={'/'}
