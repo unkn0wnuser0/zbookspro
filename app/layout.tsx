@@ -5,6 +5,7 @@ import './styles/index.scss'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Cursor from './layout/cursor/cursor'
+import Footer from './layout/footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default async function RootLayout({
 
   const { data: header } = await client.getSingle('header')
   const { data: partials } = await client.getSingle('partials')
+  const { data: footer } = await client.getSingle('footer')
 
   return (
     <html>
@@ -30,6 +32,7 @@ export default async function RootLayout({
         <Header data={header} partials={partials} />
         {/* <Cursor speed={0.0025} /> */}
         {children}
+        <Footer data={footer} />
       </body>
     </html>
   )

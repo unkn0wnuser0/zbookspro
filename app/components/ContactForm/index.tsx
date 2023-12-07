@@ -96,21 +96,21 @@ export default function ContactForm({
     }
 
     const apiEndpoint = '/api/email'
-    // showModal()
+    showModal()
 
-    fetch(apiEndpoint, {
-      method: 'POST',
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((response) => {
-        showModal()
-        button.current!.disabled = false
-      })
-      .catch((err) => {
-        alert(err)
-        button.current!.disabled = false
-      })
+    // fetch(apiEndpoint, {
+    //   method: 'POST',
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((res) => res.json())
+    //   .then((response) => {
+    //     showModal()
+    //     button.current!.disabled = false
+    //   })
+    //   .catch((err) => {
+    //     alert(err)
+    //     button.current!.disabled = false
+    //   })
   }
 
   const showModal = () => {
@@ -132,9 +132,17 @@ export default function ContactForm({
       duration: 0.75,
       ease: 'power3.out',
     })
+
+    setTimeout(() => {
+      closeModal()
+    }, 3000)
   }
 
   const closeModal = () => {
+    username.current!.value = ''
+    phone.current!.value = ''
+    email.current!.value = ''
+    button.current!.disabled = false
     GSAP.to(successModal.current, {
       autoAlpha: 0,
       duration: 0.35,

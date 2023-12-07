@@ -43,7 +43,7 @@
     justify-content: center;
   }
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     margin-top: 3.6rem;
     flex-wrap: wrap;
     justify-content: center;
@@ -57,7 +57,7 @@
   flex-direction: column;
   align-items: center;
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     width: 25rem;
   }
 }
@@ -89,6 +89,10 @@
 .prosicons__point__title {
   @extend %title-24;
   margin-bottom: 1.2rem;
+
+  @include media('<tablet-v') {
+    font-size: 1.8rem;
+  }
 }
 
 .prosicons__point__description {

@@ -303,6 +303,31 @@ export type ContactFormDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Footer → Links*
+ */
+export interface FooterDocumentDataLinksItem {
+  /**
+   * Link field in *Footer → Links*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.ContentRelationshipField;
+
+  /**
+   * Caption field in *Footer → Links*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links[].caption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  caption: prismic.KeyTextField;
+}
+
+/**
  * Content for Footer documents
  */
 interface FooterDocumentData {
@@ -316,6 +341,17 @@ interface FooterDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   copyright_text: prismic.RichTextField;
+
+  /**
+   * Links field in *Footer*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: footer.links[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  links: prismic.GroupField<Simplify<FooterDocumentDataLinksItem>>;
 }
 
 /**
@@ -844,6 +880,94 @@ export type SharedComponentsDocument<Lang extends string = string> =
     Lang
   >;
 
+type TextpageDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Text Page documents
+ */
+interface TextpageDocumentData {
+  /**
+   * Title field in *Text Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: textpage.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Text field in *Text Page*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: textpage.text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *Text Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: textpage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<TextpageDocumentDataSlicesSlice>
+  /**
+   * Meta Description field in *Text Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: textpage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Text Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: textpage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *Text Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: textpage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * Text Page document from Prismic
+ *
+ * - **API ID**: `textpage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TextpageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<TextpageDocumentData>,
+    "textpage",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | AboutUsDocument
   | ContactFormDocument
@@ -853,7 +977,8 @@ export type AllDocumentTypes =
   | IndexDocument
   | OurServicesDocument
   | PartialsDocument
-  | SharedComponentsDocument;
+  | SharedComponentsDocument
+  | TextpageDocument;
 
 /**
  * Primary content in *AlignedTextBlock → Primary*
@@ -2154,6 +2279,7 @@ declare module "@prismicio/client" {
       ContactFormDocumentData,
       FooterDocument,
       FooterDocumentData,
+      FooterDocumentDataLinksItem,
       HeaderDocument,
       HeaderDocumentData,
       HeaderDocumentDataNavigationLinksItem,
@@ -2173,6 +2299,9 @@ declare module "@prismicio/client" {
       SharedComponentsDocument,
       SharedComponentsDocumentData,
       SharedComponentsDocumentDataSlicesSlice,
+      TextpageDocument,
+      TextpageDocumentData,
+      TextpageDocumentDataSlicesSlice,
       AllDocumentTypes,
       AlignedTextBlockSlice,
       AlignedTextBlockSliceDefaultPrimary,

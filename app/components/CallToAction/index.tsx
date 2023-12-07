@@ -95,6 +95,10 @@ export default function CallToAction({
             <button
               className='cta__button'
               style={{ visibility: animated ? 'hidden' : 'visible' }}
+              onClick={() => {
+                const target = document.querySelector('.contactform')
+                target?.scrollIntoView({ behavior: 'smooth' })
+              }}
             >
               {data.primary.button_caption}
             </button>

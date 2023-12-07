@@ -15,11 +15,32 @@
   flex-wrap: nowrap;
   align-items: center;
 
+  @include media('<tablet') {
+    margin: 9.6rem 6.4rem;
+    margin-top: 4.8rem;
+    height: unset;
+
+    .cta__button {
+      margin-bottom: unset;
+    }
+  }
+
   &#v2 {
     justify-content: center;
     height: 24rem;
 
+    .cta__image__wrapper {
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
 
+    @include media('<tablet') {
+      margin: 9.6rem 6.4rem;
+      height: unset;
+    }
     figure {
       width: unset;
       
@@ -28,7 +49,7 @@
       };
     }
 
-    @include media('<duo') {
+    @include media('<tablet-v') {
       height: unset;
 
       .cta__image__wrapper {
@@ -38,7 +59,7 @@
 
   }
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     flex-direction: column;
     margin: 4.8rem 1.6rem;
     padding: 2.4rem 0;
@@ -50,7 +71,7 @@
   height: 100%;
   padding: 3.6rem;
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     width: 100%;
     max-height: 30rem;
     padding: 1.6rem;
@@ -67,7 +88,7 @@
   width: 50%;
   padding: 3.6rem;
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     padding: 1.6rem;
     width: 100%;
     text-align: center
@@ -91,9 +112,9 @@
 .cta__content__paragraphs {
   @extend %text-cta;
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     font-size: 1.6rem;
-    margin-bottom: 2.4rem;
+    margin-bottom: unset;
   }
 }
 
@@ -107,7 +128,7 @@
     color: $color-white;
   }
 
-  @include media('<duo') {
+  @include media('<tablet-v') {
     margin-top: unset;
     margin-bottom: unset;
   }

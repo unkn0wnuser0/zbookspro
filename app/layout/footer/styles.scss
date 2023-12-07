@@ -1,0 +1,32 @@
+@import '../../styles/index.scss';
+
+.footer {
+
+}
+
+.footer__wrapper {
+  width: 100%;
+  padding: 3.6rem 3.6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include media('<duo') {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer__copyright {
+  @extend %text-14;
+}
+
+.footer__links__wrapper {
+
+}
+
+.footer__link {
+  @extend %link-16;
+  @extend %link--hidden;
+}
