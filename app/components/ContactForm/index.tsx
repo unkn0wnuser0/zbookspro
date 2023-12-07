@@ -96,21 +96,21 @@ export default function ContactForm({
     }
 
     const apiEndpoint = '/api/email'
-    showModal()
+    // showModal()
 
-    // fetch(apiEndpoint, {
-    //   method: 'POST',
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((res) => res.json())
-    //   .then((response) => {
-    //     showModal()
-    //     button.current!.disabled = false
-    //   })
-    //   .catch((err) => {
-    //     alert(err)
-    //     button.current!.disabled = false
-    //   })
+    fetch(apiEndpoint, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        showModal()
+        button.current!.disabled = false
+      })
+      .catch((err) => {
+        alert(err)
+        button.current!.disabled = false
+      })
   }
 
   const showModal = () => {
