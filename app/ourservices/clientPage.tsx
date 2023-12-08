@@ -47,6 +47,9 @@ export default function ClientOurServices({
                 <div className='oursevices__service__name'>
                   <PrismicRichText field={element.name} />
                 </div>
+                <div className='ourservices__service__description'>
+                  <PrismicRichText field={element.description} />
+                </div>
               </div>
             )
           })}

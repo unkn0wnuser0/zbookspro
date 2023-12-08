@@ -35,6 +35,7 @@
   flex-direction: row;
   justify-content: center;
   gap:3.6rem;
+  flex-wrap: wrap;
 
   @include media('<duo') {
     flex-wrap: wrap;
@@ -46,6 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 300px;
 
   @include media('<duo') {
     width: 40%;
@@ -59,6 +61,12 @@
 .oursevices__service__name {
   @extend %text-18;
   font-weight: 500;
+}
+
+.ourservices__service__description {
+  text-align: center;
+  @extend %text-14;
+  font-weight: 400;
 }
 
 .pricing__wrapper {

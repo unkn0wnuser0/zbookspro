@@ -623,6 +623,16 @@ export interface OurServicesDocumentDataServicesItem {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   name: prismic.RichTextField;
+
+  /**
+   * Description field in *Our Services → Services*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: our_services.services[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
 }
 
 type OurServicesDocumentDataSlicesSlice = ContactFormSlice | PricingSlice;
