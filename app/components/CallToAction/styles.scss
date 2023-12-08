@@ -21,7 +21,7 @@
     height: unset;
 
     .cta__button {
-      margin-bottom: unset;
+      // margin-bottom: unset;
     }
   }
 
@@ -89,6 +89,9 @@
   padding: 3.6rem;
 
   @include media('<tablet-v') {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     padding: 1.6rem;
     width: 100%;
     text-align: center
@@ -111,17 +114,20 @@
 
 .cta__content__paragraphs {
   @extend %text-cta;
+  margin: auto;
+  margin-bottom: 2.4rem;
 
   @include media('<tablet-v') {
     font-size: 1.6rem;
-    margin-bottom: unset;
+    // margin-bottom: unset;
   }
 }
 
 .cta__button {
-  margin-top: 2.4rem;
+  // margin-top: 2.4rem;
   background-color: $color-white;
   color: $color-black;
+  // margin: unset;
 
   &.pricing {
     background-color: $color-red;
@@ -129,13 +135,13 @@
   }
 
   @include media('<tablet-v') {
-    margin-top: unset;
-    margin-bottom: unset;
+    // margin-top: unset;
+    // margin-bottom: unset;
   }
 }
 
 .cta__button__wrapper {
-  padding-top: 3.6rem;
+  // padding-top: 3.6rem;
   width: 100%;
   display: flex;
   justify-content: center;

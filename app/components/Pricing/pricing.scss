@@ -35,12 +35,14 @@
 }
 
 .pricing__wrapper {
-  margin-bottom: 9.6rem;
   margin: auto;
+  margin-bottom: 9.6rem;
+
 
   @include media('<tablet-v') {
     width: 90%;
-    padding: 9.6rem 0;
+    padding-top: 9.6rem;
+    // padding: 9.6rem 0;
   }
 }
 
@@ -72,6 +74,10 @@
 .pricing__table__wrapper {
   width: 90%;
   margin: auto;
+
+  @include media('<tablet-v') {
+    margin-bottom: 3.6rem;
+  }
 }
 
 .pricing__table__heading__wrapper {
@@ -227,11 +233,11 @@
   &.pricing {
     @include media('<duo') {
       width: 100%;
-      margin: auto;
+      // margin: auto;
     }
   }
   display: block;
-  margin: 4.8rem auto 6.4rem;
+  // margin: 4.8rem auto 6.4rem;
   // width: 25%;
 
   @include media('<duo') {
