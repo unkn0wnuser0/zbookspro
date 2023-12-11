@@ -11,7 +11,7 @@ export async function generateMetadata() {
   return {
     title: data.meta_title,
     description: data.meta_description,
-    image: data.meta_image.url,
+    image: data.meta_image,
   }
 }
 
