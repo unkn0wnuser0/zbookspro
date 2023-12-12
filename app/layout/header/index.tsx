@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Helmet } from 'react-helmet'
 import Script from 'next/script'
+import { initializeGoogleTagManager } from '@/app/utils/googleTagManager'
 
 export default function Header({
   data,
@@ -26,6 +27,7 @@ export default function Header({
   const [index, setIndex] = useState<boolean>(pathname == '/' ? true : false)
 
   useEffect(() => {
+    initializeGoogleTagManager('GTM-WKZ66M55')
     const anchors = Array.from(wrapper.current?.querySelectorAll('#anchor')!)
     anchors.forEach((element) => {
       element.addEventListener('click', (event) => {
