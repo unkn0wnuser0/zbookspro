@@ -33,7 +33,7 @@ export default function ContactForm({
   const timeline = GSAP.timeline()
 
   const sendEmail = (event: FormEvent) => {
-    event.preventDefault()
+    // event.preventDefault()
     button.current!.disabled = true
     const emptyCheck = [username.current!, email.current!, phone.current!]
 
