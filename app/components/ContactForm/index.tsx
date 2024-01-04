@@ -34,6 +34,9 @@ export default function ContactForm({
 
   const sendEmail = (event: FormEvent) => {
     // event.preventDefault()
+    window.dataLayer.push({
+      event: 'formSubmit.Success',
+    })
     button.current!.disabled = true
     const emptyCheck = [username.current!, email.current!, phone.current!]
 
