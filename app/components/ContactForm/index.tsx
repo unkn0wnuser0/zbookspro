@@ -35,8 +35,9 @@ export default function ContactForm({
   const sendEmail = (event: FormEvent) => {
     // event.preventDefault()
     window.dataLayer.push({
-      event: 'formSubmit.Success',
+      event: 'form_submit',
     })
+
     button.current!.disabled = true
     const emptyCheck = [username.current!, email.current!, phone.current!]
 
@@ -109,6 +110,9 @@ export default function ContactForm({
       .then((response) => {
         showModal()
         button.current!.disabled = false
+        window.dataLayer.push({
+          event: 'formSubmit.Success',
+        })
       })
       .catch((err) => {
         alert(err)
