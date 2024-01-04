@@ -96,6 +96,9 @@ export default function ContactForm({
     }
 
     if (errored) {
+      window.dataLayer.push({
+        event: 'formSubmit.Error',
+      })
       return (button.current!.disabled = false)
     }
 
@@ -116,6 +119,9 @@ export default function ContactForm({
       })
       .catch((err) => {
         alert(err)
+        window.dataLayer.push({
+          event: 'formSubmit.Error',
+        })
         button.current!.disabled = false
       })
   }
