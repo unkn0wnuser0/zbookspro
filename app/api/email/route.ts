@@ -19,8 +19,8 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  // const recipients = ['yann@zazmic.com', 'elena@zazmic.com']
-  const recipients = ['fishmalek@gmail.com']
+  const recipients = ['yann@zazmic.com', 'elena@zazmic.com']
+  // const recipients = ['fishmalek@gmail.com']
 
   const mailOptions: Mail.Options = {
     from: process.env.MY_EMAIL,
